@@ -32,8 +32,8 @@ Arborescence-type attendue pour chaque projet (exemple pour `libft/`) :
 ├─ libft/
 │  ├─ README.md
 │  ├─ Makefile
-│  ├─ includes/          # en-têtes .h
-│  ├─ srcs/              # sources .c/.cpp
+│  ├─ includes/         # en-têtes .h
+│  ├─ srcs/             # sources .c/.cpp
 │  ├─ sujet/            # énoncé et ressources du projet
 │  ├─ tests/            # tests et/ou scripts de validation (optionnel)
 │  └─ assets/           # cartes, maps, fichiers d’exemples… (optionnel)
@@ -42,7 +42,7 @@ Arborescence-type attendue pour chaque projet (exemple pour `libft/`) :
 └─ ...
 ```
 
-Conseils:
+Explications :
 - Un `README.md` local par projet pour les instructions spécifiques.
 - Un `Makefile` par projet avec les cibles classiques (`all`, `clean`, `fclean`, `re`, `bonus` si nécessaire).
 - Respect de la Norme 42 (Norminette) pour les projets C.
@@ -85,7 +85,7 @@ cd tests
 
 | Projet              | Dossier               | Description courte                                 | Statut     | Note | Sujet |
 |---------------------|-----------------------|-----------------------------------------------------|------------|------|-------|
-| Libft               | [libft](./libft/)     | Bibliothèque C personnelle                          | À venir    | —    | —     |
+| Libft               | [libft](./libft/)     | Bibliothèque C personnelle                          | Fini    | 106    | [sujet_libft](./libft/sujet/libft.en.subject.pdf)     |
 | get_next_line       | [get_next_line](./get_next_line/) | Lecture ligne à ligne d’un fichier/FD     | À venir    | —    | —     |
 | ft_printf           | [ft_printf](./ft_printf/) | Réimplémentation de printf                        | À venir    | —    | —     |
 | Born2beroot         | [born2beroot](./born2beroot/) | Administration système et virtualisation       | À venir    | —    | —     |
