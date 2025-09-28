@@ -108,7 +108,7 @@ cd tests
 
 ## Progression (checklist)
 
-- [✔️] Libft
+- [x] Libft
 - [ ] get_next_line
 - [ ] ft_printf
 - [ ] Born2beroot
