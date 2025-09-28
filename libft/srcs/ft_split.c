@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 18:01:38 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/09/28 18:54:07 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/09/28 20:03:10 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static char	**ft_alloc(char const *s, char c, char **split)
 		else
 		{
 			split[j] = ft_cpytillsep(s + i, c);
-			if (!split)
+			if (!split[j])
 			{
-				while (j >= 0)
-					free(split[j--]);
+				while (--j >= 0)
+					free(split[j]);
 				return (free(split), NULL);
 			}
 			j++;
