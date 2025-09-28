@@ -32,11 +32,11 @@ Arborescence-type attendue pour chaque projet (exemple pour `libft/`) :
 ├─ libft/
 │  ├─ README.md
 │  ├─ Makefile
-│  ├─ include/          # en-têtes .h
-│  ├─ src/              # sources .c/.cpp
+│  ├─ includes/          # en-têtes .h
+│  ├─ srcs/              # sources .c/.cpp
+│  ├─ sujet/            # énoncé et ressources du projet
 │  ├─ tests/            # tests et/ou scripts de validation (optionnel)
-│  ├─ assets/           # cartes, maps, fichiers d’exemples… (optionnel)
-│  └─ sujet/            # énoncé et ressources du projet (optionnel)
+│  └─ assets/           # cartes, maps, fichiers d’exemples… (optionnel)
 ├─ get_next_line/
 ├─ ft_printf/
 └─ ...
