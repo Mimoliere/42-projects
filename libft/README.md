@@ -1,189 +1,175 @@
 # Libft
 
-## 📋 Table des matières
+## 📋 Table of contents
 
-- [À propos](#à-propos)
+- [About](#about)
 - [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Fonctions implémentées](#fonctions-implémentées)
-  - [Fonctions libc](#fonctions-libc)
-  - [Fonctions supplémentaires](#fonctions-supplémentaires)
-  - [Fonctions bonus (listes chaînées)](#fonctions-bonus-listes-chaînées)
+- [Usage](#usage)
+- [Implemented functions](#implemented-functions)
+  - [Libc functions](#libc-functions)
+  - [Additional functions](#additional-functions)
+  - [Bonus functions (linked lists)](#bonus-functions-linked-lists)
   - [Printf](#printf)
   - [Get Next Line](#get-next-line)
-- [Structure du projet](#structure-du-projet)
+- [Project structure](#project-structure)
 - [Compilation](#compilation)
 
-## À propos
+## About
 
-Libft est une bibliothèque C personnalisée implémentant des fonctions de la libc standard ainsi que des fonctions utilitaires supplémentaires.
-Cette bibliothèque est sensée être notre boîte à outils personnelle pour les futurs projets en C du cursus et devrait être développée au fur et à mesure de notre avancée.
+Libft is a custom C library implementing functions from the standard libc as well as extra utility functions.
+This library is meant to be a personal toolbox for future C projects in the cursus and should be expanded as we progress.
 
-C'était un projet assez rapide et facile à faire, de quoi se remettre dans le bain pour le début du cursus.
+It was a fairly quick and easy project to complete, a good way to get back into C at the beginning of the curriculum.
 
 ## Installation
 
 ```bash
-git clone [votre-repo]
+git clone [your-repo]
 cd libft
 make
 ```
 
-## Utilisation
+## Usage
 
-1. Compilez la bibliothèque avec `make`
-2. Incluez le fichier d'en-tête dans vos fichiers C :
+1. Build the library with `make`
+2. Include the header file in your C files:
 ```c
 #include "includes/libft.h"
 ```
-3. Compilez votre projet avec la bibliothèque :
+3. Compile your project with the library:
 ```bash
-gcc -Wall -Wextra -Werror -o mon_programme mon_fichier.c -L emplacement_libft -lft
+gcc -Wall -Wextra -Werror -o my_program my_file.c -L path_to_libft -lft
 ```
 
-## Fonctions implémentées
+## Implemented functions
 
-### Fonctions libc
+### Libc functions
 
-#### Fonctions de vérification de caractères
-- `ft_isalpha` - Vérifie si le caractère est alphabétique
-- `ft_isdigit` - Vérifie si le caractère est un chiffre
-- `ft_isalnum` - Vérifie si le caractère est alphanumérique
-- `ft_isascii` - Vérifie si le caractère est ASCII
-- `ft_isprint` - Vérifie si le caractère est imprimable
+#### Character checks
+- `ft_isalpha` - Checks if the character is alphabetical
+- `ft_isdigit` - Checks if the character is a digit
+- `ft_isalnum` - Checks if the character is alphanumeric
+- `ft_isascii` - Checks if the character is ASCII
+- `ft_isprint` - Checks if the character is printable
 
-#### Fonctions de manipulation de chaînes
-- `ft_strlen` - Calcule la longueur d'une chaîne
-- `ft_strchr` - Cherche un caractère dans une chaîne
-- `custom_strchr` - Version personnalisée de strchr
-- `ft_strrchr` - Cherche un caractère dans une chaîne (depuis la fin)
-- `ft_strncmp` - Compare deux chaînes sur n caractères
-- `ft_strlcpy` - Copie une chaîne avec limitation de taille
-- `ft_strlcat` - Concatène des chaînes avec limitation de taille
-- `ft_strnstr` - Cherche une sous-chaîne dans une chaîne
+#### String manipulation
+- `ft_strlen` - Returns the length of a string
+- `ft_strchr` - Searches for a character in a string
+- `custom_strchr` - Custom version of strchr
+- `ft_strrchr` - Searches for a character in a string (from the end)
+- `ft_strncmp` - Compares two strings up to n characters
+- `ft_strlcpy` - Copies a string with size limitation
+- `ft_strlcat` - Concatenates strings with size limitation
+- `ft_strnstr` - Searches for a substring in a string
 
-#### Fonctions de manipulation de mémoire
-- `ft_memset` - Remplit la mémoire avec un octet
-- `ft_bzero` - Met à zéro une zone mémoire
-- `ft_memcpy` - Copie une zone mémoire
-- `ft_memmove` - Copie une zone mémoire (gère les chevauchements)
-- `ft_memchr` - Cherche un octet dans la mémoire
-- `ft_memcmp` - Compare deux zones mémoire
+#### Memory manipulation
+- `ft_memset` - Fills a memory area with a byte
+- `ft_bzero` - Sets a memory area to zero
+- `ft_memcpy` - Copies a memory area
+- `ft_memmove` - Copies a memory area (handles overlap)
+- `ft_memchr` - Searches for a byte in memory
+- `ft_memcmp` - Compares two memory areas
 
-#### Fonctions de conversion
-- `ft_atoi` - Convertit une chaîne en entier
-- `ft_toupper` - Convertit en majuscule
-- `ft_tolower` - Convertit en minuscule
+#### Conversion
+- `ft_atoi` - Converts a string to an integer
+- `ft_toupper` - Converts to uppercase
+- `ft_tolower` - Converts to lowercase
 
-#### Fonctions d'allocation
-- `ft_calloc` - Alloue et initialise la mémoire
-- `custom_calloc` - Version personnalisée de calloc avec valeur d'initialisation
-- `ft_strdup` - Duplique une chaîne
+#### Allocation
+- `ft_calloc` - Allocates and initializes memory
+- `custom_calloc` - Custom version of calloc with initialization value
+- `ft_strdup` - Duplicates a string
 
-### Fonctions supplémentaires
+### Additional functions
 
-#### Manipulation de chaînes avancée
-- `ft_substr` - Extrait une sous-chaîne
-- `ft_strjoin` - Joint deux chaînes
-- `altered_ft_strjoin` - Version modifiée de strjoin (libère s1)
-- `ft_strtrim` - Supprime les caractères indésirables
-- `ft_split` - Divise une chaîne selon un délimiteur
-- `ft_cpytillsep` - Copie une chaîne jusqu'à un séparateur
-- `ft_strmapi` - Applique une fonction à chaque caractère
-- `ft_striteri` - Itère sur une chaîne avec une fonction
+#### Advanced string manipulation
+- `ft_substr` - Extracts a substring
+- `ft_strjoin` - Joins two strings
+- `altered_ft_strjoin` - Modified version of strjoin (frees s1)
+- `ft_strtrim` - Trims unwanted characters from both ends
+- `ft_split` - Splits a string using a delimiter
+- `ft_cpytillsep` - Copies a string up to a separator
+- `ft_strmapi` - Applies a function to each character (returns a new string)
+- `ft_striteri` - Iterates over a string with a function (in-place)
 
-#### Conversion et utilitaires
-- `ft_itoa` - Convertit un entier en chaîne
+#### Conversion and utilities
+- `ft_itoa` - Converts an integer to a string
 
-#### Fonctions de sortie
-- `ft_putchar_fd` - Écrit un caractère sur un descripteur de fichier
-- `ft_putstr_fd` - Écrit une chaîne sur un descripteur de fichier
-- `ft_putendl_fd` - Écrit une chaîne suivie d'un retour à la ligne
-- `ft_putnbr_fd` - Écrit un nombre sur un descripteur de fichier
-- `ft_putnbrbase_fd` - Écrit un nombre dans une base donnée
+#### Output functions
+- `ft_putchar_fd` - Writes a character to a file descriptor
+- `ft_putstr_fd` - Writes a string to a file descriptor
+- `ft_putendl_fd` - Writes a string followed by a newline
+- `ft_putnbr_fd` - Writes a number to a file descriptor
+- `ft_putnbrbase_fd` - Writes a number in a given base
 
-#### Fonctions pour printf (comptage de caractères)
-- `ft_putchar_counts` - Écrit un caractère et compte
-- `ft_putstr_counts` - Écrit une chaîne et compte les caractères
-- `ft_putnbr_counts` - Écrit un nombre et compte les caractères
-- `ft_putnbrbase_counts` - Écrit un nombre en base et compte les caractères
+#### Printf helpers (character counting)
+- `ft_putchar_counts` - Writes a character and counts it
+- `ft_putstr_counts` - Writes a string and counts characters
+- `ft_putnbr_counts` - Writes a number and counts characters
+- `ft_putnbrbase_counts` - Writes a number in a base and counts characters
 
-### Fonctions bonus (listes chaînées)
+### Bonus functions (linked lists)
 
-- `ft_lstnew` - Crée un nouveau nœud
-- `ft_lstadd_front` - Ajoute un nœud au début
-- `ft_lstadd_back` - Ajoute un nœud à la fin
-- `ft_lstsize` - Compte les nœuds
-- `ft_lstlast` - Retourne le dernier nœud
-- `ft_lstdelone` - Supprime un nœud
-- `ft_lstclear` - Supprime et libère tous les nœuds
-- `ft_lstiter` - Itère sur la liste
-- `ft_lstmap` - Applique une fonction et crée une nouvelle liste
+- `ft_lstnew` - Creates a new node
+- `ft_lstadd_front` - Adds a node at the beginning
+- `ft_lstadd_back` - Adds a node at the end
+- `ft_lstsize` - Counts the nodes
+- `ft_lstlast` - Returns the last node
+- `ft_lstdelone` - Deletes a node
+- `ft_lstclear` - Deletes and frees all nodes
+- `ft_lstiter` - Iterates over the list
+- `ft_lstmap` - Applies a function and creates a new list
 
 ### Printf
 
-Une implémentation personnalisée de `printf` avec support des conversions :
-- `%c` - caractère
-- `%s` - chaîne
-- `%d`, `%i` - entier décimal
-- `%u` - entier non signé
-- `%x`, `%X` - hexadécimal
-- `%p` - pointeur
-- `%%` - caractère %
+A custom implementation of `printf` (Detailed in the corresponding directory)
 
 ### Get Next Line
 
-- `get_next_line` - Lit une ligne depuis un descripteur de fichier
-- Buffer configurable via `BUFFER_SIZE`
+- `get_next_line` - Reads a line from a file descriptor (Detailed in the corresponding directory)
 
-### Fonctions utilitaires supplémentaires
+### Additional utility functions
 
-- `ft_strcmp` - Compare deux chaînes complètes
-- `ft_has_char` - Vérifie si une chaîne contient un caractère
-- `ft_strndup` - Duplique n caractères d'une chaîne
-- `free_arr` - Libère un tableau de chaînes
-- `ft_countwords` - Compte les mots dans une chaîne
-- `ft_max` - Retourne le maximum entre deux entiers
-- `ft_min` - Retourne le minimum entre deux entiers
-- `ft_atoll` - Convertit une chaîne en long long
-- `is_allchar` - Vérifie si tous les caractères d'une chaîne sont identiques à un caractère donné
-- Fonctions étendues de vérification (`ft_isalldigit`, `ft_isallalpha`, `ft_isallalnum`... etc)
+- `ft_strcmp` - Compares two full strings
+- `ft_has_char` - Checks if a string contains a given character
+- `ft_strndup` - Duplicates n characters from a string
+- `free_arr` - Frees an array of strings
+- `ft_countwords` - Counts words in a string
+- `ft_max` - Returns the maximum of two integers
+- `ft_min` - Returns the minimum of two integers
+- `ft_atoll` - Converts a string to a long long
+- `is_allchar` - Checks if all characters in a string are equal to a given character
+- Extended check functions (`ft_isalldigit`, `ft_isallalpha`, `ft_isallalnum`, etc.)
 
-## Structure du projet
+## Project structure
 
-```
+```text
 libft/
-├── Makefile                # Fichier de compilation
-├── README.md               # Ce fichier
+├── Makefile                # Build file
+├── README.md               # This file
 ├── includes/
-│   └── libft.h             # Fichier d'en-tête principal
-└── srcs/                   # Fichiers sources
-    ├── ft_*.c              # Fonctions principales
-    ├── *_bonus.c           # Fonctions bonus
-    ├── ft_printf*.c        # Implémentation printf
-    └── get_next_line.c     # Implémentation GNL
+│   └── libft.h             # Main header file
+└── srcs/                   # Source files
+    ├── ft_*.c              # Core functions
+    ├── *_bonus.c           # Bonus functions
+    ├── ft_printf*.c        # Printf implementation
+    └── get_next_line.c     # GNL implementation
 ```
 
 ## Compilation
 
-### Commandes make disponibles
+### Available make targets
 
-- `make` ou `make all` - Compile la bibliothèque de base
-- `make bonus` - Compile avec les fonctions bonus
-- `make clean` - Supprime les fichiers objets
-- `make fclean` - Supprime les fichiers objets et la bibliothèque
-- `make re` - Recompile entièrement
+- `make` or `make all` - Builds the base library
+- `make bonus` - Builds the library with bonus functions
+- `make clean` - Removes object files
+- `make fclean` - Removes object files and the library
+- `make re` - Full rebuild
 
-### Flags de compilation
+### Compilation flags
 
-La bibliothèque est compilée avec les flags suivants :
-- `-Wall` - Active tous les avertissements
-- `-Wextra` - Active des avertissements supplémentaires  
-- `-Werror` - Traite les avertissements comme des erreurs
-- `-g3` - Active les informations de débogage
-
----
-
-**Auteur :** Mimoliere 
-**École :** 42
-**Date :** Novembre 2024
+The library is compiled with the following flags:
+- `-Wall` - Enable common warnings
+- `-Wextra` - Enable extra warnings  
+- `-Werror` - Treat warnings as errors
+- `-g3` - Enable debug information

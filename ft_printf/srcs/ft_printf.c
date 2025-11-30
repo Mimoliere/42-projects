@@ -6,11 +6,37 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:18:50 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/11/30 22:51:22 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/11/30 23:41:24 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+static int	ft_isconversion(const char *str);
+static void	ft_print(const char *str, va_list args, int i, int *charcount);
+
+int	ft_printf(const char *str, ...)
+{
+	va_list	args;
+	int		i;
+	int		charcount;
+
+	i = 0;
+	charcount = 0;
+	va_start(args, str);
+	while (str[i])
+	{
+		while (str[i] && !ft_isconversion(str + i))
+			ft_putchar_counts(str[i++], &charcount);
+		if (str[i])
+		{
+			ft_print(str, args, i, &charcount);
+			i += 2;
+		}
+	}
+	va_end(args);
+	return (charcount);
+}
 
 static int	ft_isconversion(const char *str)
 {
@@ -43,27 +69,4 @@ static void	ft_print(const char *str, va_list args, int i, int *charcount)
 			"0123456789abcdef", charcount, 0);
 	else if (str[i + 1] == '%')
 		ft_putchar_counts('%', charcount);
-}
-
-int	ft_printf(const char *str, ...)
-{
-	va_list	args;
-	int		i;
-	int		charcount;
-
-	i = 0;
-	charcount = 0;
-	va_start(args, str);
-	while (str[i])
-	{
-		while (str[i] && !ft_isconversion(str + i))
-			ft_putchar_counts(str[i++], &charcount);
-		if (str[i])
-		{
-			ft_print(str, args, i, &charcount);
-			i += 2;
-		}
-	}
-	va_end(args);
-	return (charcount);
 }
