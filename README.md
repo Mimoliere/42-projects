@@ -17,7 +17,6 @@ PS : Je me suis aidé de l'IA dans la création des README.
 - [Prérequis & outils](#prérequis--outils)
 - [Construire et tester (générique)](#construire-et-tester-générique)
 - [Liste des projets](#liste-des-projets)
-- [Progression (checklist)](#progression-checklist)
 - [Ajouter un nouveau projet](#ajouter-un-nouveau-projet)
 - [Notes personnelles](#notes-personnelles)
 
@@ -86,45 +85,21 @@ cd tests
 | Projet              | Dossier               | Description courte                                 | Statut     | Note | Sujet |
 |---------------------|-----------------------|-----------------------------------------------------|------------|------|-------|
 | Libft               | [libft](./libft/)     | Bibliothèque C personnelle                          | Fini    | 106    | [sujet_libft](./libft/sujet/libft.en.subject.pdf)     |
-| get_next_line       | [get_next_line](./get_next_line/) | Lecture ligne à ligne d’un fichier/FD     | À venir    | —    | —     |
-| ft_printf           | [ft_printf](./ft_printf/) | Réimplémentation de printf                        | À venir    | —    | —     |
-| Born2beroot         | [born2beroot](./born2beroot/) | Administration système et virtualisation       | À venir    | —    | —     |
-| push_swap           | [push_swap](./push_swap/) | Tri avec opérations sur piles                   | À venir    | —    | —     |
-| so_long             | [so_long](./so_long/) | Petit jeu 2D (MiniLibX)                           | À venir    | —    | —     |
-| minitalk            | [minitalk](./minitalk/) | Communication client/serveur via signaux        | À venir    | —    | —     |
-| minishell           | [minishell](./minishell/) | Mini interpréteur de commandes                  | À venir    | —    | —     |
-| philosophers        | [philosophers](./philosophers/) | Threads, mutex, concurrence                   | À venir    | —    | —     |
-| NetPractice         | [netpractice](./netpractice/) | Exercices réseau IP                              | À venir    | —    | —     |
-| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspiré de Wolfenstein 3D)             | À venir    | —    | —     |
-| miniRT              | [miniRT](./miniRT/)   | Raytracer simple                                    | À venir    | —    | —     |
+| get_next_line       | [get_next_line](./get_next_line/) | Lecture ligne à ligne d’un fichier/FD     | Fini    | —    | —     |
+| ft_printf           | [ft_printf](./ft_printf/) | Réimplémentation de printf                        | Fini    | —    | —     |
+| Born2beroot         | [born2beroot](./born2beroot/) | Administration système et virtualisation       | Fini    | —    | —     |
+| push_swap           | [push_swap](./push_swap/) | Tri avec opérations sur piles                   | Fini    | —    | —     |
+| so_long             | [so_long](./so_long/) | Petit jeu 2D (MiniLibX)                           | Fini    | —    | —     |
+| pipex           	  | [pipex](./pipex/) | Gestion de pipes									        | Fini    | —    | —     |
+| minishell           | [minishell](./minishell/) | Mini interpréteur de commandes                  | Fini    | —    | —     |
+| philosophers        | [philosophers](./philosophers/) | Threads, mutex, concurrence                   | Fini    | —    | —     |
+| NetPractice         | [netpractice](./netpractice/) | Exercices réseau IP                              | Fini    | —    | —     |
+| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspiré de Wolfenstein 3D)             | En cours    | —    | —     |
 | CPP Modules         | [cpp_modules](./cpp_modules/) | Modules C++ (OOP, orthodox canonical form)    | À venir    | —    | —     |
 | Inception           | [inception](./inception/) | Docker, docker-compose                              | À venir    | —    | —     |
 | ft_irc              | [ft_irc](./ft_irc/)   | Serveur IRC                                         | À venir    | —    | —     |
 | webserv             | [webserv](./webserv/) | Serveur HTTP                                        | À venir    | —    | —     |
 | ft_transcendence    | [ft_transcendence](./ft_transcendence/) | Projet web full-stack                        | À venir    | —    | —     |
-
-
----
-
-## Progression (checklist)
-
-- [x] Libft
-- [ ] get_next_line
-- [ ] ft_printf
-- [ ] Born2beroot
-- [ ] push_swap
-- [ ] so_long
-- [ ] minitalk
-- [ ] minishell
-- [ ] philosophers
-- [ ] NetPractice
-- [ ] cub3d
-- [ ] miniRT
-- [ ] CPP Modules
-- [ ] Inception
-- [ ] ft_irc
-- [ ] webserv
-- [ ] ft_transcendence
 
 ---
 
