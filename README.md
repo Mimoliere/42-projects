@@ -15,7 +15,7 @@ PS: I used AI to help me write the READMEs.
 
 - [Repository organization](#repository-organization)
 - [Prerequisites & tools](#prerequisites--tools)
-- [Build and test (generic)](#build-and-test-generic)
+- [Build](#build)
 - [Project list](#project-list)
 - [Add a new project](#add-a-new-project)
 - [Personal notes](#personal-notes)
@@ -54,9 +54,11 @@ Explanations:
   - `make`
   - `gcc`/`clang` for C, `c++` for C++ modules (often with `-std=c++98`)
 
+- Norminette
+
 ---
 
-## Build and test (generic)
+## Build
 
 For a typical C/C++ project:
 
@@ -68,13 +70,6 @@ make clean      # removes object files
 make fclean     # removes binaries + objects
 make re         # rebuilds from scratch
 norminette      # checks the norm
-```
-
-Running tests (if available):
-
-```bash
-cd tests
-./run_tests.sh  # (example) or commands described in the project README
 ```
 
 ---
