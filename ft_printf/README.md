@@ -3,6 +3,9 @@
 `ft_printf` is a partial reimplementation of the standard C library function `printf`.  
 The goal is to handle formatted output to the standard output while accurately counting the number of printed characters.
 
+This was quite an interesting project in my opinion.
+When I started learning coding before 42, I never really questionned how all the functions I used were coded. Although we code a lot of C library functions in the Piscine (the entry test for 42), I was really curious about this one and I am pretty happy to know how the function I use all the time works now.
+
 ## Prototype
 
 ```c

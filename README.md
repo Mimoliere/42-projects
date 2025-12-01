@@ -79,21 +79,21 @@ norminette      # checks the norm
 | Project             | Folder                | Short description                                    | Status    | Mark | Subject |
 |---------------------|-----------------------|------------------------------------------------------|-----------|------|---------|
 | Libft               | [libft](./libft/)     | Personal C library                                   | Finished  | 106  | [subject_libft](./libft/subject/libft.en.subject.pdf)     |
-| get_next_line       | [get_next_line](./get_next_line/) | Line-by-line file/FD reading            | Finished  | 125    | [subject_get_next_line](./get_next_line/subject/en.subject.pdf)     |
-| ft_printf           | [ft_printf](./ft_printf/) | `printf` reimplementation                       | Finished  | 100    | [subject_ft_printf](./ft_printf/subject/en.subject.pdf)     |
-| Born2beroot         | [born2beroot](./born2beroot/) | System administration and virtualization       | Finished  | —    | —     |
-| push_swap           | [push_swap](./push_swap/) | Sorting using stack operations                  | Finished  | —    | —     |
-| so_long             | [so_long](./so_long/) | Small 2D game (MiniLibX)                           | Finished  | —    | —     |
-| pipex               | [pipex](./pipex/) | Pipe management                                     | Finished  | —    | —     |
-| minishell           | [minishell](./minishell/) | Mini shell / command interpreter               | Finished  | —    | —     |
-| philosophers        | [philosophers](./philosophers/) | Threads, mutexes, concurrency                 | Finished  | —    | —     |
-| NetPractice         | [netpractice](./netpractice/) | IP networking exercises                          | Finished  | —    | —     |
-| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspired by Wolfenstein 3D)             | Finished | —  | —     |
+| get_next_line       | [get_next_line](./get_nex   t_line/) | Line-by-line file/FD reading          | Finished  | 125  | [subject_get_next_line](./get_next_line/subject/en.subject.pdf)     |
+| ft_printf           | [ft_printf](./ft_printf/) | `printf` reimplementation                        | Finished  | 100  | [subject_ft_printf](./ft_printf/subject/en.subject.pdf)     |
+| Born2beroot         | [born2beroot](./born2beroot/) | System administration and virtualization     | Finished  | 100  | [subject_Born2beroot](./Born2beroot/subject/fr.subject.pdf)     |
+| push_swap           | [push_swap](./push_swap/) | Sorting using stack operations                   | Finished  | 125  | [subject_push_swap](./push_swap/subject/en.subject.pdf)     |
+| so_long             | [so_long](./so_long/) | Small 2D game (MiniLibX)                             | Finished  | 100  | [subject_so_long](./so_long/subject/en.subject.pdf)     |
+| pipex               | [pipex](./pipex/) | Pipe management                                          | Finished  | 100  | [subject_pipex](./pipex/subject/en.subject.pdf)     |
+| minishell           | [minishell](./minishell/) | Mini shell / command interpreter                 | Finished  | 92   | [subject_minishell](./minishell/subject/en.subject.pdf)     |
+| philosophers        | [philosophers](./philosophers/) | Threads, mutexes, concurrency              | Finished  | 100  | [subject_philosophers](./philosophers/subject/en.subject.pdf)     |
+| NetPractice         | [netpractice](./netpractice/) | IP networking exercises                      | Finished  | 100  | [subject_NetPractice](./NetPractice/subject/en.subject.pdf)     |
+| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspired by Wolfenstein 3D)              | Finished  | 105  | [subject_cub3d](./cub3d/subject/en.subject.pdf)     |
 | CPP Modules         | [cpp_modules](./cpp_modules/) | C++ modules (OOP, orthodox canonical form)   | Upcoming  | —    | —     |
-| Inception           | [inception](./inception/) | Docker, docker-compose                            | Upcoming  | —    | —     |
-| ft_irc              | [ft_irc](./ft_irc/)   | IRC server                                          | Upcoming  | —    | —     |
-| webserv             | [webserv](./webserv/) | HTTP server                                         | Upcoming  | —    | —     |
-| ft_transcendence    | [ft_transcendence](./ft_transcendence/) | Full-stack web project                     | Upcoming  | —    | —     |
+| Inception           | [inception](./inception/) | Docker, docker-compose                           | Upcoming  | —    | —     |
+| ft_irc              | [ft_irc](./ft_irc/)   | IRC server                                           | Upcoming  | —    | —     |
+| webserv             | [webserv](./webserv/) | HTTP server                                          | Upcoming  | —    | —     |
+| ft_transcendence    | [ft_transcendence](./ft_transcendence/) | Full-stack web project             | Upcoming  | —    | —     |
 
 ---
 

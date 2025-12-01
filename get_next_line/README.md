@@ -8,6 +8,9 @@ The goal of this project is to implement a robust line reader that correctly han
 - Internal buffering
 - Multiple file descriptors (in the bonus part)
 
+Cool project.
+The memory management was really annoying but overall it's a really useful tool for the next projects and interesting concept using the static variables.
+
 ---
 
 ## Prototype
