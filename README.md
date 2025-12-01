@@ -93,7 +93,7 @@ cd tests
 | minishell           | [minishell](./minishell/) | Mini shell / command interpreter               | Finished  | —    | —     |
 | philosophers        | [philosophers](./philosophers/) | Threads, mutexes, concurrency                 | Finished  | —    | —     |
 | NetPractice         | [netpractice](./netpractice/) | IP networking exercises                          | Finished  | —    | —     |
-| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspired by Wolfenstein 3D)             | In progress | —  | —     |
+| cub3d               | [cub3d](./cub3d/)     | Raycasting (inspired by Wolfenstein 3D)             | Finished | —  | —     |
 | CPP Modules         | [cpp_modules](./cpp_modules/) | C++ modules (OOP, orthodox canonical form)   | Upcoming  | —    | —     |
 | Inception           | [inception](./inception/) | Docker, docker-compose                            | Upcoming  | —    | —     |
 | ft_irc              | [ft_irc](./ft_irc/)   | IRC server                                          | Upcoming  | —    | —     |
@@ -104,40 +104,58 @@ cd tests
 
 ## Add a new project
 
-1) Create the folder:
+1) Execute `new_project.sh`
 ```bash
-mkdir -p <project_name>/{src,include,tests,assets,subject}
-cp -n .gitignore <project_name>/ 2>/dev/null || true
+./new_project.sh \<name_of_the_project\>
 ```
 
-2) Add a minimal `README.md`:
-```md
-# <project_name>
-Short description, dependencies, build and run instructions.
-```
-
-3) Create a simple `Makefile` (C example):
+2) Sample of a `Makefile` for a C program:
 ```make
-NAME := <binary_or_lib>
-CC   := cc
-CFLAGS := -Wall -Wextra -Werror
-SRCS := $(wildcard src/*.c)
-OBJS := $(SRCS:.c=.o)
-INCS := -I include
+NAME = <binary_or_lib>
+SRCS_DIR = srcs
+OBJS_DIR = objs
+SRCS = $(addprefix $(SRCS_DIR)/<.c files>)
+OBJS = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
+CC   = cc
+CFLAGS = -Wall -Wextra -Werror
+INCS = -I include
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-    $(CC) $(CFLAGS) $(INCS) -o $@ $(OBJS)
+    @$(CC) $(CFLAGS) $(INCS) -o $@ $(OBJS)
+    @echo "COMPILED SUCCESSFULLY"
+
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	@mkdir -p $(OBJS_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-    rm -f $(OBJS)
+	@rm -rf $(OBJS_DIR)
+	@rm -f $(OBJS)
+	@echo "CLEANED"
 
 fclean: clean
-    rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
+
 .PHONY: all clean fclean re
+```
+
+3) Write a corresponding `README.md`:
+```README
+# Project Name
+
+## Prototype
+
+## Behavior
+
+## Files
+
+## Compilation
+
+## Notes (eventually)
 ```
 
 4) Update the [Project list](#project-list) and the [Progression](#progression-checklist) above.
