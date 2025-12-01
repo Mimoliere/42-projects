@@ -25,8 +25,11 @@ int ft_printf(const char *str, ...);
 - `%p`: pointer address (format `0x...`)
 - `%%`: prints the `%` character
 
-## Main files
+Minimal usage example in srcs/main.c
 
+## Files
+
+### Main files
 - `srcs/ft_printf.c`  
   - Parses the format string, reads variadic arguments and delegates printing to helper functions.
 - `srcs/ft_printf_functions.c`  
@@ -34,7 +37,7 @@ int ft_printf(const char *str, ...);
 - `includes/ft_printf.h`  
   - Declares the public `ft_printf` function and the helper counting functions.
 
-## Helper functions
+### Helper functions
 
 These functions write to standard output while incrementing a counter passed by address:
 
@@ -54,30 +57,11 @@ These functions write to standard output while incrementing a counter passed by 
 
 A `Makefile` is provided.
 
-- Build the `ft_printf` binary:
+### Available targets
 
 ```bash
-make
+make        # builds the mandatory program
+make clean  # removes object files
+make fclean # removes object files and the program
+make re     # full rebuild
 ```
-
-- Clean object files:
-
-```bash
-make clean
-```
-
-- Clean everything (objects + binary):
-
-```bash
-make fclean
-```
-
-- Rebuild from scratch:
-
-```bash
-make re
-```
-
-## Usage
-
-Minimal usage example in srcs/main.c
