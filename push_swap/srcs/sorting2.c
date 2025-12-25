@@ -6,35 +6,28 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:11:20 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/02 17:02:53 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/25 23:03:20 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort3(t_pile **a)
+void	five_four(t_pile **a, t_pile **b);
+void	sort3(t_pile **a);
+
+void	sort_4_5(t_pile **a, t_pile **b)
 {
-	if (ft_pilesize(*a) == 2 && !is_sorted(*a))
-		return (swap(a, 'a'));
-	while (!is_sorted(*a))
-	{
-		if (((*a)->val < (*a)->next->val
-				&& (*a)->next->val > (*a)->next->next->val
-				&& (*a)->val < (*a)->next->next->val)
-			|| ((*a)->next->val < (*a)->next->next->val
-				&& (*a)->val < (*a)->next->next->val
-				&& (*a)->val > (*a)->next->val)
-			|| ((*a)->next->next->val < (*a)->val && (*a)->next->val < (*a)->val
-				&& (*a)->next->val > (*a)->next->next->val))
-			swap(a, 'a');
-		if ((*a)->next->val < (*a)->val && (*a)->next->next->val < (*a)->val
-			&& (*a)->next->next->val > (*a)->next->val)
-			rotate(a, 'a');
-		else if ((*a)->next->next->val < (*a)->next->val
-			&& (*a)->val < (*a)->next->val
-			&& (*a)->val > (*a)->next->next->val)
-			reverse_rotate(a, 'a');
-	}
+	int	size;
+
+	if (is_sorted(*a))
+		return ;
+	size = ft_pilesize(*a);
+	if (size > 3)
+		five_four(a, b);
+	if (size > 4 && !is_sorted(*a))
+		five_four(a, b);
+	sort3(a);
+	push_allin_a(a, b);
 }
 
 void	five_four(t_pile **a, t_pile **b)
@@ -64,17 +57,27 @@ void	five_four(t_pile **a, t_pile **b)
 	push(b, a, 'b');
 }
 
-void	sort_4_5(t_pile **a, t_pile **b)
+void	sort3(t_pile **a)
 {
-	int	size;
-
-	if (is_sorted(*a))
-		return ;
-	size = ft_pilesize(*a);
-	if (size > 3)
-		five_four(a, b);
-	if (size > 4 && !is_sorted(*a))
-		five_four(a, b);
-	sort3(a);
-	push_allin_a(a, b);
+	if (ft_pilesize(*a) == 2 && !is_sorted(*a))
+		return (swap(a, 'a'));
+	while (!is_sorted(*a))
+	{
+		if (((*a)->val < (*a)->next->val
+				&& (*a)->next->val > (*a)->next->next->val
+				&& (*a)->val < (*a)->next->next->val)
+			|| ((*a)->next->val < (*a)->next->next->val
+				&& (*a)->val < (*a)->next->next->val
+				&& (*a)->val > (*a)->next->val)
+			|| ((*a)->next->next->val < (*a)->val && (*a)->next->val < (*a)->val
+				&& (*a)->next->val > (*a)->next->next->val))
+			swap(a, 'a');
+		if ((*a)->next->val < (*a)->val && (*a)->next->next->val < (*a)->val
+			&& (*a)->next->next->val > (*a)->next->val)
+			rotate(a, 'a');
+		else if ((*a)->next->next->val < (*a)->next->val
+			&& (*a)->val < (*a)->next->val
+			&& (*a)->val > (*a)->next->next->val)
+			reverse_rotate(a, 'a');
+	}
 }

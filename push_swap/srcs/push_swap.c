@@ -6,11 +6,36 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:00:06 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/02 16:59:23 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/25 23:00:40 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static void	sort(t_pile **a, t_pile **b);
+
+int	main(int argc, char *argv[])
+{
+	t_pile	*pile;
+	t_pile	*second;
+
+	second = NULL;
+	if (argc < 2)
+		return (1);
+	if (argc == 2 && ft_strncmp(argv[1], "", ft_strlen(argv[1])) == 0)
+		print_error(1);
+	pile = init_pile(argc, argv);
+	if (!pile)
+		return (-1);
+	if (is_sorted(pile))
+		return (ft_pileclear(&pile), 1);
+	if (ft_pilesize(pile) <= 5)
+		sort_4_5(&pile, &second);
+	else
+		sort(&pile, &second);
+	ft_pileclear(&pile);
+	return (0);
+}
 
 static void	sort(t_pile **a, t_pile **b)
 {
@@ -35,27 +60,4 @@ static void	sort(t_pile **a, t_pile **b)
 		sort_4_5(a, b);
 	if (ft_pilesize(*b) > 0)
 		push_allin_a(a, b);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_pile	*pile;
-	t_pile	*second;
-
-	second = NULL;
-	if (argc < 2)
-		return (1);
-	if (argc == 2 && ft_strncmp(argv[1], "", ft_strlen(argv[1])) == 0)
-		print_error(1);
-	pile = init_pile(argc, argv);
-	if (!pile)
-		return (-1);
-	if (is_sorted(pile))
-		return (ft_pileclear(&pile), 1);
-	if (ft_pilesize(pile) <= 5)
-		sort_4_5(&pile, &second);
-	else
-		sort(&pile, &second);
-	ft_pileclear(&pile);
-	return (0);
 }

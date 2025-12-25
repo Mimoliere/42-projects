@@ -6,31 +6,13 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:27:40 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/02 17:02:32 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/25 23:11:12 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	count_both(t_pile *a, int value_a, t_pile *b, int value_b)
-{
-	char	action_a;
-	char	action_b;
-	int		count_a;
-	int		count_b;
-	int		count;
-
-	action_a = assign_action(a, value_a);
-	action_b = assign_action(b, value_b);
-	count_a = count_bring(a, value_a);
-	count_b = count_bring(b, value_b);
-	if ((action_a == 'r' && action_b == 'r')
-		|| (action_a == 'i' && action_b == 'i'))
-		count = ft_max(count_a, count_b);
-	else
-		count = count_a + count_b;
-	return (count);
-}
+static int	count_both(t_pile *a, int value_a, t_pile *b, int value_b);
 
 int	optimal_a(t_pile *a, t_pile *b)
 {
@@ -53,6 +35,26 @@ int	optimal_a(t_pile *a, t_pile *b)
 		p = p->next;
 	}
 	return (optimal);
+}
+
+static int	count_both(t_pile *a, int value_a, t_pile *b, int value_b)
+{
+	char	action_a;
+	char	action_b;
+	int		count_a;
+	int		count_b;
+	int		count;
+
+	action_a = assign_action(a, value_a);
+	action_b = assign_action(b, value_b);
+	count_a = count_bring(a, value_a);
+	count_b = count_bring(b, value_b);
+	if ((action_a == 'r' && action_b == 'r')
+		|| (action_a == 'i' && action_b == 'i'))
+		count = ft_max(count_a, count_b);
+	else
+		count = count_a + count_b;
+	return (count);
 }
 
 int	count_bring(t_pile *pile, int value)
