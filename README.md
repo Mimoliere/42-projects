@@ -79,7 +79,7 @@ norminette      # checks the norm
 | Project             | Folder                | Short description                                    | Status    | Mark | Subject |
 |---------------------|-----------------------|------------------------------------------------------|-----------|------|---------|
 | Libft               | [libft](./libft/)     | Personal C library                                   | Finished  | 106  | [subject_libft](./libft/subject/libft.en.subject.pdf)     |
-| get_next_line       | [get_next_line](./get_nex   t_line/) | Line-by-line file/FD reading          | Finished  | 125  | [subject_get_next_line](./get_next_line/subject/en.subject.pdf)     |
+| get_next_line       | [get_next_line](./get_next_line/) | Line-by-line file/FD reading             | Finished  | 125  | [subject_get_next_line](./get_next_line/subject/en.subject.pdf)     |
 | ft_printf           | [ft_printf](./ft_printf/) | `printf` reimplementation                        | Finished  | 100  | [subject_ft_printf](./ft_printf/subject/en.subject.pdf)     |
 | Born2beroot         | [born2beroot](./born2beroot/) | System administration and virtualization     | Finished  | 100  | [subject_Born2beroot](./Born2beroot/subject/fr.subject.pdf)     |
 | push_swap           | [push_swap](./push_swap/) | Sorting using stack operations                   | Finished  | 125  | [subject_push_swap](./push_swap/subject/en.subject.pdf)     |
