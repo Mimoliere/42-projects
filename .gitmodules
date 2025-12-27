@@ -1,0 +1,6 @@
+[submodule "includes/mlx"]
+	path = includes/mlx
+	url = https://github.com/42Paris/minilibx-linux.git
+[submodule "so_long/includes/mlx"]
+	path = so_long/includes/mlx
+	url = https://github.com/42Paris/minilibx-linux.git
