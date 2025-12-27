@@ -6,6 +6,14 @@ I like this project SO MUCH !
 It's obviously one of my favorites because it's easy and funny to make. Plus, I had friends who helped me to do the assets so I felt like we were a tiny team developing our silly game.
 Anyway, it was interesting to see how to use assets and how to implement the basic mechanics of a 2D game.
 
+# IMPORTANT
+PLEASE DON'T FORGET TO INCLUDE THE MINILIBX IN THE "includes/mlx" FOLDER BY TYPING
+
+- For Linux :
+```bash
+$ git clone git@github.com:42paris/minilibx-linux.git includes/mlx
+```
+
 ---
 
 ## Prototype
