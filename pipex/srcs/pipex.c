@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:23:18 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 16:59:49 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:11:57 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,20 @@ static int	process1(t_exec_params *params, char **argv,
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_exec_params	*params;
+	t_exec_params	params;
 
 	if (argc != 5)
 	{
 		ft_putstr_fd("Wrong number of arguments (need 5).\n", STDERR_FILENO);
 		exit(1);
 	}
-	params = malloc(sizeof(t_exec_params));
-	if (!params)
-		return (-1);
-	if (before_process(params, argv, envp) == -1)
+	if (before_process(&params, argv, envp) == -1)
 	{
 		ft_putstr_fd("Can't Malloc", 2);
-		free_n_close(params, 0, 0);
+		free_n_close(&params, 0, 0);
 		exit(2);
 	}
-	free_n_close(params, 0, 0);
+	free_n_close(&params, 0, 0);
 	exit(0);
 }
 
@@ -85,6 +82,9 @@ static int	process1(t_exec_params *params, char **argv,
 		free_arr(params->cmnd);
 		clear_n_exit(params, "dup2", pipefd);
 	}
+	close(pipefd[1]);
+	close(params->fd);
+	free_arr(params->paths);
 	if (execve(params->cmnd[0], params->cmnd, envp) == -1)
 	{
 		close(params->fd);
@@ -109,6 +109,9 @@ static int	process2(t_exec_params *params, char **argv,
 		free_arr(params->cmnd);
 		clear_n_exit(params, "dup2", pipefd);
 	}
+	close(pipefd[0]);
+	close(params->fd);
+	free_arr(params->paths);
 	if (execve(params->cmnd[0], params->cmnd, envp) == -1)
 	{
 		close(params->fd);

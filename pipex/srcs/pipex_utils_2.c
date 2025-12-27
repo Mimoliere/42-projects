@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:42:12 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 16:58:07 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:58:47 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	free_n_close(t_exec_params *params, int cmnd, int fd)
 		free_arr(params->cmnd);
 	if (fd == 1)
 		close(params->fd);
-	free(params);
 }
 
 void	close_fds(int *fds, int size)
