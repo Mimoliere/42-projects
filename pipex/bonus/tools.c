@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:22:46 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/15 16:11:38 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:56:01 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
 void init_params(int argc, char **argv, char **envp, t_exec_params *params)
 {

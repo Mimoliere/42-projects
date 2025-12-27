@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:43:16 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/15 16:19:08 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:56:01 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 #include "libft.h"
 
 void	free_arr(char **arr)

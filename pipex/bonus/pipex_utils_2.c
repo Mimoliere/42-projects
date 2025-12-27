@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:42:12 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/15 16:53:27 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:56:01 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
 int	opening(t_exec_params *params, char *filename, int i)
 {

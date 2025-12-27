@@ -3,15 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:23:18 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/15 15:11:21 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:59:49 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../pipex.h"
+#include "../includes/pipex.h"
+
+static int	before_process(t_exec_params *params, char **argv, char **envp);
+static int	process1(t_exec_params *params, char **argv,
+	int *pipefd, char **envp);
+	static int	process2(t_exec_params *params, char **argv,
+	int *pipefd, char **envp);
+
+int	main(int argc, char **argv, char **envp)
+{
+	t_exec_params	*params;
+
+	if (argc != 5)
+	{
+		ft_putstr_fd("Wrong number of arguments (need 5).\n", STDERR_FILENO);
+		exit(1);
+	}
+	params = malloc(sizeof(t_exec_params));
+	if (!params)
+		return (-1);
+	if (before_process(params, argv, envp) == -1)
+	{
+		ft_putstr_fd("Can't Malloc", 2);
+		free_n_close(params, 0, 0);
+		exit(2);
+	}
+	free_n_close(params, 0, 0);
+	exit(0);
+}
+
+static int	before_process(t_exec_params *params, char **argv, char **envp)
+{
+	int		pipefd[2];
+
+	params->paths = parse_for_paths(envp, params);
+	if (!params->paths)
+		return (-1);
+	if (pipe(pipefd) == -1)
+		clear_n_exit(params, "pipe", pipefd);
+	params->pid1 = fork();
+	if (params->pid1 == -1)
+		clear_n_exit(params, "fork", pipefd);
+	if (params->pid1 == 0)
+	{
+		if (process1(params, argv, pipefd, envp) == -1)
+			return (close_fds(pipefd, 2), -1);
+	}
+	params->pid2 = fork();
+	if (params->pid2 == -1)
+		clear_n_exit(params, "fork", pipefd);
+	if (params->pid2 == 0)
+	{
+		if (process2(params, argv, pipefd, envp) == -1)
+			return (close_fds(pipefd, 2), -1);
+	}
+	start_waiting(params->pid1, params->pid2, pipefd, params);
+	return (0);
+}
 
 static int	process1(t_exec_params *params, char **argv,
 	int *pipefd, char **envp)
@@ -59,55 +116,4 @@ static int	process2(t_exec_params *params, char **argv,
 		clear_n_exit(params, "execve", pipefd);
 	}
 	return (0);
-}
-
-static int	before_process(t_exec_params *params, char **argv, char **envp)
-{
-	int		pipefd[2];
-
-	params->paths = parse_for_paths(envp, params);
-	if (!params->paths)
-		return (-1);
-	if (pipe(pipefd) == -1)
-		clear_n_exit(params, "pipe", pipefd);
-	params->pid1 = fork();
-	if (params->pid1 == -1)
-		clear_n_exit(params, "fork", pipefd);
-	if (params->pid1 == 0)
-	{
-		if (process1(params, argv, pipefd, envp) == -1)
-			return (close_fds(pipefd, 2), -1);
-	}
-	params->pid2 = fork();
-	if (params->pid2 == -1)
-		clear_n_exit(params, "fork", pipefd);
-	if (params->pid2 == 0)
-	{
-		if (process2(params, argv, pipefd, envp) == -1)
-			return (close_fds(pipefd, 2), -1);
-	}
-	start_waiting(params->pid1, params->pid2, pipefd, params);
-	return (0);
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	t_exec_params	*params;
-
-	if (argc != 5)
-	{
-		ft_putstr_fd("Wrong number of arguments (need 5).\n", STDERR_FILENO);
-		exit(1);
-	}
-	params = malloc(sizeof(t_exec_params));
-	if (!params)
-		return (-1);
-	if (before_process(params, argv, envp) == -1)
-	{
-		ft_putstr_fd("Can't Malloc", 2);
-		free_n_close(params, 0, 0);
-		exit(2);
-	}
-	free_n_close(params, 0, 0);
-	exit(0);
 }

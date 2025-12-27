@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 12:27:45 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/04/01 17:21:01 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:15:01 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	acceptable_chars(char c)
 	return (1);
 }
 
-int	count_element(char **map, char element)
+int	count_elm(char **map, char element)
 {
 	int	row;
 	int	column;
@@ -41,7 +41,7 @@ int	count_element(char **map, char element)
 
 	row = -1;
 	count = 0;
-	while(map[++row])
+	while (map[++row])
 	{
 		column = -1;
 		while (map[row][++column])
@@ -57,10 +57,10 @@ void	clone_map(char **map, char **clone)
 	int	j;
 
 	i = -1;
-	while(map[++i])
+	while (map[++i])
 	{
 		j = -1;
-		while(map[i][++j])
+		while (map[i][++j])
 			clone[i][j] = map[i][j];
 	}
 }

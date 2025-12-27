@@ -6,12 +6,12 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:20:21 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/15 23:25:38 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:56:01 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../pipex_bonus.h"
+#include "../includes/pipex_bonus.h"
 
 int	process1(t_exec_params *params, char **argv,
 	int *pipefd, char **envp)

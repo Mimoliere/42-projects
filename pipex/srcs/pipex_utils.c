@@ -6,11 +6,11 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:43:16 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/25 17:09:14 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:55:22 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../includes/pipex.h"
 #include "libft.h"
 
 void	free_arr(char **arr)

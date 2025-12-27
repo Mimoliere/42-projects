@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:18:58 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/25 23:57:38 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:14:34 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ static int	keypress(int keycode, t_appli *appli)
 
 	if (keycode == 65307)
 		free_exit(appli, 0);
-	else if (keycode == 65362 || keycode == 119) // Haut
+	else if (keycode == 65362 || keycode == 119)
 		move = move_player(appli->map, 1, appli);
-	else if (keycode == 65363 || keycode == 100) // Droite
+	else if (keycode == 65363 || keycode == 100)
 		move = move_player(appli->map, 2, appli);
-	else if (keycode == 65361 || keycode == 97) // Gauche
+	else if (keycode == 65361 || keycode == 97)
 		move = move_player(appli->map, 3, appli);
-	else if (keycode == 65364 || keycode == 115) // Bas
+	else if (keycode == 65364 || keycode == 115)
 		move = move_player(appli->map, 4, appli);
 	else
 		move = 0;

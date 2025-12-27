@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 00:42:11 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/26 23:25:28 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:13:48 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	is_valid_map(char **map, int fd)
 	column = 0;
 	while (map[row])
 		row++;
-	while(map[0][column])
+	while (map[0][column])
 		column++;
 	clone = ft_calloc(row + 1, sizeof(char *));
 	if (!clone)
@@ -75,28 +75,29 @@ static void	is_valid_map(char **map, int fd)
 
 static void	borders(char **map)
 {
-	int	lines;
-	int	columns;
-	int	max_lines;
-	int	max_column;
+	int	l;
+	int	c;
+	int	max_l;
+	int	max_c;
 
-	lines = -1;
-	max_lines = max_dimensions(map, 1);
-	max_column = max_dimensions(map, 0);
-	if (max_column <= max_lines)
+	l = -1;
+	max_l = max_dimensions(map, 1);
+	max_c = max_dimensions(map, 0);
+	if (max_c <= max_l)
 		return (free_arr(map), map_error(3));
-	while (++lines < max_lines)
+	while (++l < max_l)
 	{
-		columns = -1;
-		if (map[lines][++columns] != '1')
+		c = -1;
+		if (map[l][++c] != '1')
 			return (free_arr(map), map_error(4));
-		while (map[lines][++columns] && columns < max_column) {
-			if ((lines == 0 || lines == max_lines - 1) && map[lines][columns] != '1')
+		while (map[l][++c] && c < max_c)
+		{
+			if ((l == 0 || l == max_l - 1) && map[l][c] != '1')
 				return (free_arr(map), map_error(4));
-			if ((lines != 0 && lines != max_lines - 1) && !acceptable_chars(map[lines][columns]))
+			if ((l != 0 && l != max_l - 1) && !acceptable_chars(map[l][c]))
 				return (free_arr(map), map_error(5));
 		}
-		if (columns != max_column || map[lines][columns - 1] != '1')
+		if (c != max_c || map[l][c - 1] != '1')
 			return (free_arr(map), map_error(4));
 	}
 }
@@ -106,17 +107,20 @@ static void	finishable(char **clone, char **map)
 	int	rows;
 	int	columns;
 
-	if (count_element(map, 'P') != 1 || count_element(map, 'E') != 1 || count_element(map, 'C') < 1)
+	if (count_elm(map, 'P') != 1 || count_elm(map, 'E') != 1
+		|| count_elm(map, 'C') < 1)
 		return (free_arr(map), free_arr(clone), map_error(6));
-	rows = -1;
-	while (clone[++rows])
+	rows = 0;
+	columns = 0;
+	while (clone[rows] && clone[rows][columns] != 'P')
 	{
-		columns = -1;
-		while(clone[rows][++columns])
-			if (clone[rows][columns] == 'P')
-				break;
-		if (clone[rows][columns] == 'P')
-			break;
+		while (clone[rows][columns] && clone[rows][columns] != 'P')
+			columns++;
+		if (clone[rows][columns] != 'P')
+		{
+			rows++;
+			columns = 0;
+		}
 	}
 	if (!recursive_path(clone, rows, columns, map))
 		return (free_arr(map), free_arr(clone), map_error(7));
@@ -133,7 +137,7 @@ static int	recursive_path(char **clone, int row, int column, char **map)
 		recursive_path(clone, row, column + 1, map);
 	if (clone[row][column - 1] != '1' && clone[row][column - 1] != 'T')
 		recursive_path(clone, row, column - 1, map);
-	if (count_element(clone, 'C') == 0 && count_element(clone, 'E') == 0)
-        return (1);
+	if (count_elm(clone, 'C') == 0 && count_elm(clone, 'E') == 0)
+		return (1);
 	return (0);
 }

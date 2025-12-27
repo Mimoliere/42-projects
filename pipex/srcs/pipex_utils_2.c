@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 16:42:12 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/12 15:29:43 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 16:58:07 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../pipex.h"
+#include "../includes/pipex.h"
 
 int	opening(t_exec_params *params, char *filename, int i)
 {
@@ -49,11 +49,9 @@ void	close_fds(int *fds, int size)
 
 void	clear_n_exit(t_exec_params *params, char *error, int *fds)
 {
-	int	i;
 	int	exitcode;
 
 	exitcode = errno;
-	i = 0;
 	if (fds)
 		close_fds(fds, 2);
 	free_n_close(params, 0, 0);
