@@ -25,8 +25,8 @@ COMMON_OBJS 	= $(COMMON_SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 PUSH_SWAP_OBJS 	= $(PUSH_SWAP_SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o) $(COMMON_OBJS)
 CHECKER_OBJS 	= $(CHECKER_SRCS:bonus/$(SRCS_DIR)/%.c=$(BONUS_OBJS_DIR)/%.o) $(COMMON_OBJS)
 
-LIBFT_DIR 		= libft
-LIBFT 			= libft/libft.a
+LIBFT_DIR 		= includes/libft
+LIBFT 			= $(LIBFT_DIR)/libft.a
 
 FLAGS 			= -Wall -Wextra -Werror -g3
 
@@ -35,11 +35,11 @@ INCLUDES 		= -I includes -I $(LIBFT_DIR)/includes -I $(BONUS_DIR)/includes
 all: $(NAME)
 
 $(NAME): $(PUSH_SWAP_OBJS) $(LIBFT)
-	@cc $(FLAGS) -o $@ $^ -L libft -lft
+	@cc $(FLAGS) -o $@ $^ -L $(LIBFT_DIR) -lft
 	@echo "PUSH_SWAP COMPILED"
 
 $(BONUS_NAME): $(CHECKER_OBJS) $(LIBFT)
-	@cc $(FLAGS) -o $@ $^ -L libft -lft
+	@cc $(FLAGS) -o $@ $^ -L $(LIBFT_DIR) -lft
 	@echo "CHECKER COMPILED"
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -53,15 +53,14 @@ $(BONUS_OBJS_DIR)/%.o: $(BONUS_DIR)/%.c
 bonus: $(NAME) $(BONUS_NAME)
 
 $(LIBFT):
-	@$(MAKE) -C libft
+	@$(MAKE) -C $(LIBFT_DIR)
 
 clean:
 	@rm -rf $(OBJS_DIR) $(BONUS_OBJS_DIR)
-	@$(MAKE) -C libft clean
-
+	@$(MAKE) -C $(LIBFT_DIR) clean
 fclean: clean
 	@rm -f $(NAME) $(BONUS_NAME)
-	@$(MAKE) -C libft fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
