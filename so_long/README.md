@@ -13,13 +13,21 @@ Anyway, it was interesting to see how to use assets and how to implement the bas
 
 ---
 
-# IMPORTANT
-PLEASE DON'T FORGET TO INCLUDE THE MINILIBX IN THE "includes/mlx" FOLDER BY TYPING
+## IMPORTANT
 
-- For Linux :
+- If you want to clone this repository with the MiniLibX library included, use:
+
 ```bash
-$ git clone git@github.com:42paris/minilibx-linux.git includes/mlx
+git clone --recurse-submodules git@github.com:42paris/minilibx-linux.git
 ```
+
+- If you already cloned without submodules, run:
+
+```bash
+git submodule update --init --recursive
+```
+
+This will automatically fetch the MiniLibX sources into `includes/mlx`.
 
 ---
 
@@ -67,7 +75,7 @@ Mandatory:
 - `srcs/errors.c` — Error handling and resource cleanup
 - `includes/so_long.h` — Main header file
 - `includes/libft/` — Custom utility library (required for compilation)
-- `includes/mlx/` — MiniLibX graphics library
+- `includes/mlx/` — MiniLibX graphics library (as a git submodule)
 - `assets/` — Game sprites (XPM images)
 - `maps/` — Example map files
 
