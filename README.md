@@ -86,7 +86,7 @@ norminette      # checks the norm
 | so_long             | [so_long](./so_long/) | Small 2D game (MiniLibX)                             | Finished  | 100  | [subject_so_long](./so_long/subject/en.subject.pdf)     |
 | pipex               | [pipex](./pipex/) | Pipe management                                          | Finished  | 100  | [subject_pipex](./pipex/subject/en.subject.pdf)     |
 | minishell           | [minishell](./minishell/) | Mini shell / command interpreter                 | Finished  | 92   | [subject_minishell](./minishell/subject/en.subject.pdf)     |
-| philosophers        | [philosophers](./philosophers/) | Threads, mutexes, concurrency              | Finished  | 100  | [subject_philosophers](./philosophers/subject/en.subject.pdf)     |
+| Philosophers        | [Philosophers](./Philosophers/) | Threads, mutexes, concurrency              | Finished  | 100  | [subject_Philosophers](./Philosophers/subject/en.subject.pdf)     |
 | NetPractice         | [netpractice](./netpractice/) | IP networking exercises                      | Finished  | 100  | [subject_NetPractice](./NetPractice/subject/en.subject.pdf)     |
 | cub3d               | [cub3d](./cub3d/)     | Raycasting (inspired by Wolfenstein 3D)              | Finished  | 105  | [subject_cub3d](./cub3d/subject/en.subject.pdf)     |
 | CPP Modules         | [cpp_modules](./cpp_modules/) | C++ modules (OOP, orthodox canonical form)   | Upcoming  | —    | —     |

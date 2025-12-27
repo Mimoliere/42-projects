@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 10:23:18 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 20:11:57 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:28:37 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 static int	before_process(t_exec_params *params, char **argv, char **envp);
 static int	process1(t_exec_params *params, char **argv,
-	int *pipefd, char **envp);
-	static int	process2(t_exec_params *params, char **argv,
-	int *pipefd, char **envp);
+				int *pipefd, char **envp);
+static int	process2(t_exec_params *params, char **argv,
+				int *pipefd, char **envp);
 
 int	main(int argc, char **argv, char **envp)
 {
