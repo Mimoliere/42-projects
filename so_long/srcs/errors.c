@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 00:26:53 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/26 23:29:43 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:22:04 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,10 @@ void	file_error(void)
 	exit(1);
 }
 
-void	map_error(int code)
+void	map_error(void)
 {
 	ft_putstr_fd("Map is not valid.\n", 2);
-	if (code == 2)
-		ft_putstr_fd("Allocation error.\n", 2);
-	if (code == 3)
-		ft_putstr_fd("Non rectangular map.\n", 2);
-	if (code == 4)
-		ft_putstr_fd("Non closed map.\n", 2);
-	if (code == 5)
-		ft_putstr_fd("Non valid character in map.\n", 2);
-	if (code == 6)
-		ft_putstr_fd("Non valid amount of elements in map.\n", 2);
-	if (code == 7)
-		ft_putstr_fd("Non completable map.\n", 2);
-	exit(code);
+	exit(2);
 }
 
 void	free_exit(t_appli *appli, int code)
@@ -49,4 +37,10 @@ void	free_exit(t_appli *appli, int code)
 	free_arr(appli->map);
 	free(appli->mlx);
 	exit(code);
+}
+
+int	end(t_appli *appli)
+{
+	free_exit(appli, 0);
+	return (0);
 }

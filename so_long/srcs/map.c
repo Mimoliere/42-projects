@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/30 12:27:45 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 17:15:01 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/04/05 15:56:07 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	max_dimensions(char **map, int n)
 {
 	int	result;
+	int	i;
+	int	j;
 
 	result = 0;
 	if (n == 1)
@@ -23,6 +25,15 @@ int	max_dimensions(char **map, int n)
 	else
 		while (map[0][result])
 			result++;
+	i = -1;
+	while (map[++i])
+	{
+		j = 0;
+		while (map[i][j])
+			j++;
+		if (n != 1 && j != result)
+			return (0);
+	}
 	return (result);
 }
 
@@ -33,7 +44,7 @@ int	acceptable_chars(char c)
 	return (1);
 }
 
-int	count_elm(char **map, char element)
+int	count_element(char **map, char element)
 {
 	int	row;
 	int	column;
