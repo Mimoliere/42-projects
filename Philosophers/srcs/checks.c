@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 22:32:54 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/05 21:32:17 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:28:32 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	check_args(int argc, char **argv)
 {
@@ -19,7 +19,7 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i++]) < 0)
+		if (ft_atoi(argv[i++]) <= 0)
 			return (0);
 	}
 	return (1);

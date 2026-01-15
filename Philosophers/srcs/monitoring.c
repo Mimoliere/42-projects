@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:15:45 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/06 13:19:44 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:28:32 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
-void	init_data(int argc, char **argv, t_monitor *monitor)
+static void	init_data(int argc, char **argv, t_monitor *monitor)
 {
 	monitor->philo_nb = ft_atoi(argv[1]);
 	monitor->time_to_die = ft_atoi(argv[2]);
@@ -25,7 +25,7 @@ void	init_data(int argc, char **argv, t_monitor *monitor)
 	monitor->nbr_meals = 0;
 	monitor->death = 0;
 	monitor->start = 0;
-	monitor->turn = monitor->philo_nb / 2;
+	monitor->turn = monitor->philo_nb - 1;
 }
 
 t_monitor	*link_monitor(t_philo *philo, int argc, char **argv)
@@ -52,15 +52,15 @@ t_monitor	*link_monitor(t_philo *philo, int argc, char **argv)
 	return (monitor);
 }
 
-void	check_eat(t_philo *philo, t_monitor *monitor)
+static void	check_eat(t_philo *philo, t_monitor *monitor)
 {
 	int	since_last_meal;
 
 	pthread_mutex_lock(&philo->wait);
-	since_last_meal =  get_time(philo->waiting_start);
+	since_last_meal = get_time(philo->waiting_start);
 	pthread_mutex_unlock(&philo->wait);
-	if (!philo->died && 
-		since_last_meal > monitor->time_to_die)
+	if (!philo->died
+		&& since_last_meal > monitor->time_to_die)
 	{
 		philo->died = 1;
 		pthread_mutex_lock(&monitor->dead);
@@ -73,14 +73,9 @@ void	*philo_died(void *arg)
 {
 	t_philo		*philo;
 	t_monitor	*monitor;
-	int			start;
 
 	philo = (t_philo *)arg;
 	monitor = philo->monitor;
-	pthread_mutex_lock(&philo->wait);
-	monitor->start = get_time(0);
-	pthread_mutex_unlock(&philo->wait);
-	start = get_time(0);
 	while (!is_dead(monitor) && check_meals(monitor))
 	{
 		philo = philo->next;
@@ -90,36 +85,7 @@ void	*philo_died(void *arg)
 	if (!check_meals(monitor))
 		printf("Yee haw !\n");
 	else
-		printf("%i %i died\n", get_time(start), philo->nb);
+		printf("%i %i died\n", get_time(monitor->start), philo->nb);
 	pthread_mutex_unlock(&philo->monitor->write);
 	return (NULL);
-}
-
-int	longest_wait(t_philo *philo)
-{
-	t_philo	*current;
-	t_philo	*longest;
-	int		i;
-	int		current_wait;
-	int		longest_wait;
-
-	current = philo->next;
-	longest = philo;
-	i = 0;
-	pthread_mutex_lock(&longest->wait);
-	longest_wait = get_time(longest->waiting_start);
-	pthread_mutex_unlock(&longest->wait);
-	while (i++ < philo->monitor->philo_nb - 1)
-	{
-		pthread_mutex_lock(&current->wait);
-		current_wait = get_time(current->waiting_start);
-		pthread_mutex_unlock(&current->wait);
-		if (current_wait > longest_wait)
-		{
-			longest_wait = current_wait;
-			longest = current;
-		}
-		current = current->next;
-	}
-	return (longest->nb);
 }
