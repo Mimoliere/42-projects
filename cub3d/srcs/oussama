@@ -1,0 +1,371 @@
+#include <mlx.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
+
+// This is a little easter egg because a friend of mine challenged himself to try and apply the algorithm (and he did pretty well !) and this is his file (really long.)
+// He supported me when working on it so thank you Oussama
+
+//-----------------------------map----------------------------------------------
+#define mapX  8      // map width
+#define mapY  8      // map height
+#define mapS  64     // map taille pxl
+
+int map[] = { // garde des murs périphériques
+ 1,1,1,1,1,1,1,1,
+ 1,0,1,0,0,0,0,1,
+ 1,0,1,0,0,0,0,1,
+ 1,0,1,1,0,0,0,1,
+ 1,0,0,0,0,0,0,1,
+ 1,0,0,1,0,1,0,1,
+ 1,0,0,0,0,0,0,1,
+ 1,1,1,1,1,1,1,1,
+};
+
+//-----------------------------struc----------------------------------------
+typedef struct s_app {
+    void    *mlx;
+    void    *win;
+    void    *img;
+    char    *data;
+    int     bpp;
+    int     size_line;
+    int     endian;
+    int     width;
+    int     height;
+
+    int keys[65536];//pour enregistrer les touches ( mouvement plus fluide psk là on dirait un bot)
+
+    float   px, py;     // player position
+    float   pdx, pdy;   // direction vector
+    int     pa;         // angle in degrees
+}   t_app;
+
+float degToRad(float a) { return a * (float) M_PI / 180.0f; }
+int   FixAng(int a)     { if (a > 359) a -= 360; if (a < 0) a += 360; return a; }
+
+//-----------------------------mes fonc utils---------------------------------------
+void put_pixel_img(t_app *a, int x, int y, int color)
+{
+    if (x < 0 || y < 0 || x >= a->width || y >= a->height) return;
+    int bytes_pp = a->bpp / 8;
+    char *dst = a->data + y * a->size_line + x * bytes_pp;
+    *(uint32_t*)dst = (uint32_t)color;
+}
+
+void fill_rect(t_app *a, int x, int y, int w, int h, int color)
+{
+    if (w <= 0 || h <= 0) return;
+    if (x < 0) { w += x; x = 0; }
+    if (y < 0) { h += y; y = 0; }
+    if (x + w > a->width)  w = a->width - x;
+    if (y + h > a->height) h = a->height - y;
+    if (w <= 0 || h <= 0) return;
+
+    for (int j = 0; j < h; ++j) {
+        char *row = a->data + (y + j) * a->size_line + x * (a->bpp / 8);
+        for (int i = 0; i < w; ++i) {
+            *(uint32_t*)(row + i * (a->bpp/8)) = (uint32_t)color;
+        }
+    }
+}
+
+// Bresenham
+void draw_line(t_app *a, int x0, int y0, int x1, int y1, int color)
+{
+    int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+    int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+    int err = dx + dy, e2;
+
+    while (1) {
+        put_pixel_img(a, x0, y0, color);
+        if (x0 == x1 && y0 == y1) break;
+        e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 += sx; }
+        if (e2 <= dx) { err += dx; y0 += sy; }
+    }
+}
+
+//-----------------------------map + joueur--------------------------------
+void drawMap2D(t_app *a)
+{
+    for (int y = 0; y < mapY; y++) {
+        for (int x = 0; x < mapX; x++) {
+            int color = (map[y * mapX + x] == 1) ? 0xFFFFFF : 0x000000;
+            // interstice (+1 -1 et -2 map)
+            fill_rect(a, x * mapS + 1, y * mapS + 1, mapS - 2, mapS - 2, color);
+        }
+    }
+}
+
+void drawPlayer2D(t_app *a)
+{
+    fill_rect(a, (int)a->px - 5, (int)a->py - 5, 11, 11, 0xFF2C00);
+    int x1 = (int)(a->px + a->pdx * 20.0f);
+    int y1 = (int)(a->py + a->pdy * 20.0f);
+    draw_line(a, (int)a->px, (int)a->py, x1, y1, 0xFF2C00);
+}
+
+//-----------------------------les fameuses ray (terrifiants) -------------------------------------
+void drawRays2D(t_app *a)
+{
+
+    int   r, mx, my, mp, dof, side;
+    float vx, vy, rx, ry, ra, xo, yo, disV, disH;
+
+    ra = (float)FixAng(a->pa +30 ); // mettre 30 pour avoir 30 depuis la gauche et fov a 60 donc dans la boucle mettre a <60
+
+    for (r = 0; r < 60; r++)
+    {
+        // --- Vertical ---
+        dof = 0; side = 0; disV = 100000.0f;
+        float Tan = tanf(degToRad(ra));
+
+        if (cosf(degToRad(ra)) > 0.001f) {
+            rx = (((int)a->px >> 6) << 6) + 64;
+            ry = (a->px - rx) * Tan + a->py;
+            xo = 64; yo = -xo * Tan;
+        }
+        else if (cosf(degToRad(ra)) < -0.001f) {
+            rx = (((int)a->px >> 6) << 6) - 0.0001f;
+            ry = (a->px - rx) * Tan + a->py;
+            xo = -64; yo = -xo * Tan;
+        }
+        else {
+            rx = a->px; ry = a->py; dof = 8;
+        }
+
+        while (dof < 8)
+        {
+            mx = (int)(rx) >> 6; my = (int)(ry) >> 6; mp = my * mapX + mx;
+            if (mp > 0 && mp < mapX * mapY && map[mp] == 1) {
+                dof = 8;
+                disV = cosf(degToRad(ra)) * (rx - a->px) - sinf(degToRad(ra)) * (ry - a->py);
+            } else {
+                rx += xo; ry += yo; dof++;
+            }
+        }
+        vx = rx; vy = ry;
+
+        // --- Horizontal ---
+        dof = 0; disH = 100000.0f;
+        Tan = 1.0f / Tan;
+
+        if (sinf(degToRad(ra)) > 0.001f) {
+            ry = (((int)a->py >> 6) << 6) - 0.0001f;
+            rx = (a->py - ry) * Tan + a->px;
+            yo = -64; xo = -yo * Tan;
+        }
+        else if (sinf(degToRad(ra)) < -0.001f) {
+            ry = (((int)a->py >> 6) << 6) + 64;
+            rx = (a->py - ry) * Tan + a->px;
+            yo = 64; xo = -yo * Tan;
+        }
+        else {
+            rx = a->px; ry = a->py; dof = 8;
+        }
+
+        while (dof < 8)
+        {
+            mx = (int)(rx) >> 6; my = (int)(ry) >> 6; mp = my * mapX + mx;
+            if (mp > 0 && mp < mapX * mapY && map[mp] == 1) {
+                dof = 8;
+                disH = cosf(degToRad(ra)) * (rx - a->px) - sinf(degToRad(ra)) * (ry - a->py);
+            } else {
+                rx += xo; ry += yo; dof++;
+            }
+        }
+
+        // Couleur du rayon differente si vertical ou horizontal d'abbord
+        int rayColor = 0x00CC00;
+        if (disV < disH) { rx = vx; ry = vy; disH = disV; rayColor = 0x009900; }
+
+        // Rayons 2D
+        draw_line(a, (int)a->px, (int)a->py, (int)rx, (int)ry, rayColor);
+
+        // Correction fish-eye
+        int ca = FixAng(a->pa - (int)ra);
+        float dis = disH * cosf(degToRad((float)ca));
+
+        // Prochain rayon
+        ra = (float)FixAng((int)ra - 1);
+    }
+}
+
+
+
+//-----------------------------Collision--------------------------------------------
+
+
+
+
+int can_move(t_app *a, float new_x, float new_y)
+{
+    int tile_size = 64;  // taille d'une case
+    int map_x = (int)(new_x / tile_size);
+    int map_y = (int)(new_y / tile_size);
+
+    // sécurité pour pas sortir du tableau
+    if (map_x < 0 || map_y < 0 || map_y >= mapY || map_x >= mapX)
+        return 0;
+
+    // 0 = vide, 1 = mur
+    if (map[map_y * mapX + map_x] == 0)
+        return 1;
+    return 0;
+}
+
+
+//-----------------------------input--------------------------------------------
+
+
+int key_press(int keycode, void *param)
+{
+    t_app *a = (t_app*)param;
+    //printf("%d\n",keycode );
+    if (keycode >= 0 && keycode < 65536)
+        a->keys[keycode] = 1;
+
+    if (keycode == 53 || keycode == 65307) { // ESC
+        mlx_destroy_window(a->mlx, a->win);
+        exit(0);
+    }
+    return 0;
+}
+
+int key_release(int keycode, void *param)
+{
+    t_app *a = (t_app*)param;
+    if (keycode >= 0 && keycode < 65536)
+        a->keys[keycode] = 0;
+    return 0;
+}
+
+
+void update_player(t_app *a)
+{
+    float new_x, new_y;
+    float speed = 0.5f; 
+    float rot_speed = 1;
+
+
+    // gauche caméra
+    if (a->keys[65361]) {
+        a->pa = FixAng(a->pa + rot_speed);
+        a->pdx = cosf(degToRad((float)a->pa));
+        a->pdy = -sinf(degToRad((float)a->pa));
+    }
+
+    // droite caméra
+    if (a->keys[65363]) {
+        a->pa = FixAng(a->pa - rot_speed);
+        a->pdx = cosf(degToRad((float)a->pa));
+        a->pdy = -sinf(degToRad((float)a->pa));
+    }
+
+    // strafe gauche (Q)
+    if (a->keys[113]) {
+        new_x = a->px + a->pdy * speed;
+        new_y = a->py - a->pdx * speed;
+        if (can_move(a, new_x, new_y)) {
+            a->px = new_x;
+            a->py = new_y;
+        }
+    }
+
+    // strafe droite (D)
+    if (a->keys[100]) {
+        new_x = a->px - a->pdy * speed;
+        new_y = a->py + a->pdx * speed;
+        if (can_move(a, new_x, new_y)) {
+            a->px = new_x;
+            a->py = new_y;
+        }
+    }
+
+    // avancer (Z)
+    if (a->keys[122]) {
+        new_x = a->px + a->pdx * speed;
+        new_y = a->py + a->pdy * speed;
+        if (can_move(a, new_x, new_y)) {
+            a->px = new_x;
+            a->py = new_y;
+        }
+    }
+
+    // reculer (S)
+    if (a->keys[115]) {
+        new_x = a->px - a->pdx * speed;
+        new_y = a->py - a->pdy * speed;
+        if (can_move(a, new_x, new_y)) {
+            a->px = new_x;
+            a->py = new_y;
+        }
+    }
+}
+
+
+//-----------------------------rendu-------------------------------------------
+void render(t_app *a)
+{
+
+    update_player(a);
+    // fenetre grise 
+    fill_rect(a, 0, 0, a->width, a->height, 0x4C4C4C);
+
+    // mise en place
+    drawMap2D(a);
+    drawPlayer2D(a);
+    drawRays2D(a);
+
+    //on push
+    mlx_put_image_to_window(a->mlx, a->win, a->img, 0, 0);
+}
+
+
+int loop_handler(void *param)
+{
+    render((t_app*)param);
+    return 0;
+}
+
+//-----------------------------main---------------------------------------------
+int main(void)
+{
+    t_app a;
+
+    a.width = 512;
+    a.height = 512;
+    a.mlx = mlx_init();
+    if (!a.mlx) return 1;
+
+
+
+    a.win = mlx_new_window(a.mlx, a.width, a.height, "OUAIIIIS MIMO OUAIIIIS");
+    if (!a.win) return 1;
+
+    a.img = mlx_new_image(a.mlx, a.width, a.height);
+    if (!a.img) return 1;
+
+    a.data = mlx_get_data_addr(a.img, &a.bpp, &a.size_line, &a.endian);
+
+
+    a.px = 150.0f; a.py = 400.0f; a.pa = 90;
+    a.pdx = cosf(degToRad((float)a.pa));
+    a.pdy = -sinf(degToRad((float)a.pa));
+
+    //  dessin
+    render(&a);
+
+    // hooks
+    mlx_hook(a.win, 2, 1L<<0, key_press, &a);
+    mlx_hook(a.win, 3, 1L<<1, key_release, &a);
+
+    mlx_loop_hook(a.mlx, loop_handler, &a);
+
+
+    mlx_loop(a.mlx);
+    return 0;
+}
