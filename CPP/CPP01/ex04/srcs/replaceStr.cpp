@@ -34,7 +34,7 @@ void	modifiedFile(std::ifstream& file, std::ofstream& outfile, std::string s1, s
 
 	while (std::getline(file, buffer)) {
 		i = buffer.find(s1);
-		while (i != (int) std::string::npos) {
+		while (i != (int) std::string::npos && s1.compare(s2) != 0) {
 			buffer.erase(i, s1.length());
 			buffer.insert(i, s2);
 			i = buffer.find(s1);
