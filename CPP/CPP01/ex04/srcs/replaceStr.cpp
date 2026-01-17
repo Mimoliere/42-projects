@@ -6,6 +6,11 @@ int	replaceStr(char *argv[]) {
 	std::string	s1 = argv[2];
 	std::string s2 = argv[3];
 
+	if (!s1.compare(s2)) {
+		std::cout << "Nothing to replace." << std::endl;
+		return (0);
+	}
+
 	std::ifstream	file(argv[1]);
 	if (!file.is_open()) {
 		std::cout << "Error: Unable to open file !" << std::endl;
@@ -34,7 +39,7 @@ void	modifiedFile(std::ifstream& file, std::ofstream& outfile, std::string s1, s
 
 	while (std::getline(file, buffer)) {
 		i = buffer.find(s1);
-		while (i != (int) std::string::npos && s1.compare(s2) != 0) {
+		while (i != (int) std::string::npos) {
 			buffer.erase(i, s1.length());
 			buffer.insert(i, s2);
 			i = buffer.find(s1);
