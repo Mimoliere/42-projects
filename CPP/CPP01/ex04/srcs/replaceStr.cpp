@@ -8,7 +8,7 @@ int	replaceStr(char *argv[]) {
 
 	if (!s1.compare(s2)) {
 		std::cout << "Nothing to replace." << std::endl;
-		return (0);
+		return (1);
 	}
 
 	std::ifstream	file(argv[1]);

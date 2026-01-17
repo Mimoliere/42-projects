@@ -15,5 +15,7 @@ int	main(int argc, char *argv[]) {
 	ret = replaceStr(argv);
 	if (ret == 0)
 		std::cout << "Replaced successfully !" << std::endl;
+	if (ret == 1)
+		ret = 0;
 	return (ret);
 }
