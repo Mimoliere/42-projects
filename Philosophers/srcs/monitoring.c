@@ -6,11 +6,11 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:15:45 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/06 13:19:44 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 void	init_data(int argc, char **argv, t_monitor *monitor)
 {

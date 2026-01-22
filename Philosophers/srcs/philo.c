@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:54:21 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/05 16:30:54 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 t_philo	*set_attributes(t_philo *prev, int i)
 {

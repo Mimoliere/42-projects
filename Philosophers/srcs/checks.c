@@ -6,11 +6,11 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 22:32:54 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/05 21:32:17 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	check_args(int argc, char **argv)
 {

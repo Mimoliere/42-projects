@@ -6,11 +6,11 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 22:28:03 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/06 13:15:04 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	ft_strlen(const char *s)
 {

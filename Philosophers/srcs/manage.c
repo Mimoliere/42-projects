@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   manage.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:12:24 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/05 13:55:31 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../includes/philo.h"
 
 int	get_time(int start)
 {
