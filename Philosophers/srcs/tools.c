@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 22:28:03 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:45:16 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	clear_philos(t_philo **philo, int nb, int moni)
 		pthread_mutex_destroy(&((*philo)->monitor->meals));
 		pthread_mutex_destroy(&((*philo)->monitor->turns));
 	}
+	free((*philo)->monitor);
 	while (i++ < nb)
 	{
 		next = tmp->next;
@@ -76,30 +77,26 @@ void	clear_philos(t_philo **philo, int nb, int moni)
 		tmp = NULL;
 		tmp = next;
 	}
-	philo = NULL;
 }
 
-void	print(char *str, int time, int nb, t_philo *philo)
+void	print(char *str, int nb, t_philo *philo)
 {
+	int	time;
+
 	if (!is_dead(philo->monitor) && check_meals(philo->monitor))
 	{
 		pthread_mutex_lock(&philo->monitor->write);
+		time = get_time(philo->monitor->start);
 		printf("%i %i %s\n", time, nb, str);
 		pthread_mutex_unlock(&philo->monitor->write);
 	}
 }
 
-int	ft_usleep(t_philo *philo, int longer)
+void	ft_usleep(size_t longer)
 {
-	long	actual;
+	size_t	start;
 
-	actual = 0;
-	while (actual < longer && !is_dead(philo->monitor) && check_meals(philo->monitor))
-	{
+	start = get_time(0);
+	while ((get_time(0) - start) < longer)
 		usleep(500);
-		actual += 500;
-	}
-	if (actual < longer)
-		return (0);
-	return (1);
 }

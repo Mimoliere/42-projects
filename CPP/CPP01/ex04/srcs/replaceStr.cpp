@@ -6,6 +6,11 @@ int	replaceStr(char *argv[]) {
 	std::string	s1 = argv[2];
 	std::string s2 = argv[3];
 
+	if (!s1.compare(s2)) {
+		std::cout << "Nothing to replace." << std::endl;
+		return (1);
+	}
+
 	std::ifstream	file(argv[1]);
 	if (!file.is_open()) {
 		std::cout << "Error: Unable to open file !" << std::endl;

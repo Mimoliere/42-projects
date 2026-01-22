@@ -8,9 +8,6 @@ I like this project SO MUCH !
 It's obviously one of my favorites because it's easy and funny to make. Plus, I had friends who helped me to do the assets so I felt like we were a tiny team developing our silly game.
 Anyway, it was interesting to see how to use assets and how to implement the basic mechanics of a 2D game.
 
-## **THIS IS NOT THE FINAL VERSION OF MY PROJECT**
-**The final version is physically at school. Since I validated this project, I don't have access to it's dedicated git repository created by 42's system. I will need to personnally go to school and get the final version of my files to put it here.**
-
 ---
 
 ## IMPORTANT

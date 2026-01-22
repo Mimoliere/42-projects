@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 22:32:54 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:44:29 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_args(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i++]) < 0)
+		if (ft_atoi(argv[i++]) <= 0)
 			return (0);
 	}
 	return (1);

@@ -11,7 +11,7 @@ SRCS = $(addprefix srcs/, \
 
 OBJS = $(SRCS:srcs/%.c=objs/%.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror #-fsanitize=thread
 
 all: $(NAME)
 

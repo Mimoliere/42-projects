@@ -6,7 +6,7 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:12:24 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:44:37 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,6 @@ int	get_time(int start)
 	gettimeofday(&time, NULL);
 	return ((time.tv_usec / 1000 + time.tv_sec * 1000) - start);
 }
-
-// int	check_time(int start, t_philo *philo)
-// {
-// 	pthread_mutex_lock(&philo->monitor->time);
-// 	if (get_time(start) > philo->monitor->time_to_die + 1)
-// 	{
-// 		philo->died = 1;
-// 		pthread_mutex_lock(&philo->monitor->dead);
-// 		philo->monitor->death = 1;
-// 		pthread_mutex_unlock(&philo->monitor->dead);
-// 		pthread_mutex_unlock(&philo->monitor->time);
-// 		return (0);
-// 	}
-// 	pthread_mutex_unlock(&philo->monitor->time);
-// 	return (1);
-// }
 
 int	is_dead(t_monitor *monitor)
 {

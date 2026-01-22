@@ -6,13 +6,13 @@
 /*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:54:21 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/12/27 20:29:29 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:44:26 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-t_philo	*set_attributes(t_philo *prev, int i)
+static t_philo	*set_attributes(t_philo *prev, int i)
 {
 	t_philo	*philo;
 
@@ -31,7 +31,7 @@ t_philo	*set_attributes(t_philo *prev, int i)
 	return (philo);
 }
 
-t_philo	*init_philos(char **argv)
+static t_philo	*init_philos(char **argv)
 {
 	t_philo	*philo;
 	t_philo	*tmp;
@@ -59,7 +59,7 @@ t_philo	*init_philos(char **argv)
 	return (philo);
 }
 
-int	joining(t_philo *philo, t_monitor *monitor)
+static int	joining(t_philo *philo, t_monitor *monitor)
 {
 	int		i;
 	t_philo	*current;
@@ -78,14 +78,13 @@ int	joining(t_philo *philo, t_monitor *monitor)
 	return (0);
 }
 
-int	run_philos(t_philo *philo)
+static int	run_philos(t_philo *philo)
 {
 	int		i;
 	t_philo	*current;
 
 	i = 1;
-	if (pthread_create(&philo->monitor->thread, NULL, philo_died, philo) != 0)
-		return (1);
+	philo->monitor->start = get_time(0);
 	current = philo;
 	while (i <= philo->monitor->philo_nb)
 	{
@@ -94,6 +93,8 @@ int	run_philos(t_philo *philo)
 		current = current->next;
 		i++;
 	}
+	if (pthread_create(&philo->monitor->thread, NULL, philo_died, philo) != 0)
+		return (1);
 	return (joining(philo, philo->monitor));
 }
 
@@ -114,7 +115,6 @@ int	main(int argc, char **argv)
 			philo_error(MALLOC_ERR, 2));
 	err = run_philos(philo);
 	clear_philos(&philo, monitor->philo_nb, 1);
-	free(monitor);
 	if (err != 0)
 		return (philo_error("Error: failed to create thread\n", 3));
 }

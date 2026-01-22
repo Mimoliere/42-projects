@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:58:12 by bguerrou          #+#    #+#             */
-/*   Updated: 2025/06/06 13:05:50 by bguerrou         ###   ########.fr       */
+/*   Updated: 2025/06/09 17:23:40 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,31 @@ typedef struct s_philo
 # define FORK_ERR "Error: failed to create fork mutex\n"
 # define MALLOC_ERR "Error: failed to allocate memory\n"
 
-void		*living(void *arg);
-t_philo		*set_attributes(t_philo *prev, int i);
-
-int			philo_error(char *str, int code);
-
-int			ft_strlen(const char *s);
-int			ft_atoi(const char *nptr);
-void		clear_philos(t_philo **philo, int nb, int moni);
-void		print(char *str, int time, int nb, t_philo *philo);
-int			ft_usleep(t_philo *philo, int longer);
-
+// checks.c
 int			check_args(int argc, char **argv);
 int			check_mutexes(t_monitor *monitor);
 int			check_meals(t_monitor *monitor);
 int			is_turn(t_philo *philo);
 
-int			get_time(int start);
-// int			check_time(int start, t_philo *philo);
-int			is_dead(t_monitor *monitor);
+// actions.c
+void		*living(void *arg);
 
-void		init_data(int argc, char **argv, t_monitor *monitor);
+// monitoring.c
 t_monitor	*link_monitor(t_philo *philo, int argc, char **argv);
 void		*philo_died(void *arg);
-int			longest_wait(t_philo *philo);
 
-void		*living(void *arg);
-int			eating(t_philo *philo);
-int			take_fork(t_philo *philo);
-void		lock(t_philo *philo, pthread_mutex_t *fork, int *count);
-void		unlock(t_philo *philo, int *count);
+// tools.c
+int			ft_strlen(const char *s);
+int			ft_atoi(const char *nptr);
+void		clear_philos(t_philo **philo, int nb, int moni);
+void		print(char *str, int nb, t_philo *philo);
+void		ft_usleep(size_t longer);
+
+// manage.c
+int			get_time(int start);
+int			is_dead(t_monitor *monitor);
+
+// errors.c
+int			philo_error(char *str, int code);
 
 #endif
