@@ -1,10 +1,10 @@
-NAME	= horde
+NAME	= a.out
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCS	= $(addprefix $(SRCDIR)/, main.cpp Zombie.cpp zombieHorde.cpp)
+SRCS	= $(addprefix $(SRCDIR)/, main.cpp Fixed.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 CC		= g++
