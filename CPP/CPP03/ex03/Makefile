@@ -1,10 +1,10 @@
-NAME	= fragtrap
+NAME	= diamondtrap
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCS	= $(addprefix $(SRCDIR)/, main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp)
+SRCS	= $(addprefix $(SRCDIR)/, main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 CC		= g++
