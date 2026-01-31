@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:11:56 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:11:59 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
@@ -7,8 +19,6 @@
 #include "linkedLists.hpp"
 
 #define MAX_INVENTORY 4
-
-#pragma once
 
 class Character : public ICharacter {
 

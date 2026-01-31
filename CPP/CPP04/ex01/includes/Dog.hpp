@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:10:49 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:10:52 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DOG_HPP
 #define DOG_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
-
-#pragma once
 
 class Dog : public Animal {
 

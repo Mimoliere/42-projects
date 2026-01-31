@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:12:16 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:12:19 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef IMATERIASOURCE_HPP
 #define IMATERIASOURCE_HPP
 
 #include <iostream>
 #include "AMateria.hpp"
-
-#pragma once
 
 class IMateriaSource {
 	public:

@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:10:39 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:10:46 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CAT_HPP
 #define CAT_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
-
-#pragma once
 
 class Cat : public Animal {
 

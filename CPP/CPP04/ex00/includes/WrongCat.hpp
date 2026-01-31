@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:10:04 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:10:06 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef WRONGCAT_HPP
 #define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
-
-#pragma once
 
 class WrongCat : public WrongAnimal {
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:12:24 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:12:26 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
@@ -5,8 +17,6 @@
 #include "IMateriaSource.hpp"
 
 #define MAX_STORAGE 4
-
-#pragma once
 
 class MateriaSource : public IMateriaSource {
 

@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:12:07 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:12:09 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ICE_HPP
 #define ICE_HPP
 
 #include <iostream>
 #include "AMateria.hpp"
-
-#pragma once
 
 class Ice : public AMateria {
 

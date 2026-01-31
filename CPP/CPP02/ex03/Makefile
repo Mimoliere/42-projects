@@ -7,7 +7,7 @@ INCDIR	= includes
 SRCS	= $(addprefix $(SRCDIR)/, main.cpp Fixed.cpp Point.cpp bsp.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
-CC		= g++
+CC		= c++
 CFLAGS	= -Werror -Wextra -Wall -std=c++98 -I $(INCDIR)
 
 all: $(NAME)

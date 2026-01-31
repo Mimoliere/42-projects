@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:11:51 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:11:53 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
@@ -5,8 +17,6 @@
 #include <string>
 
 class ICharacter;
-
-#pragma once
 
 class AMateria {
 

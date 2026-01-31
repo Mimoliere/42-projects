@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   replaceStr.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/31 14:05:37 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/01/31 14:05:40 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef REPLACESTR_HPP
 #define REPLACESTR_HPP
-
-#pragma once
 
 #include <iostream>
 #include <fstream>
