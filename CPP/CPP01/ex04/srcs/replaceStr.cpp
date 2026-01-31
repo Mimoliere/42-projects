@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:05:46 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:05:47 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:19:26 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	replaceStr(char *argv[]) {
 	std::string	s1 = argv[2];
 	std::string s2 = argv[3];
 
-	if (!s1.compare(s2)) {
+	if (!s1.compare(s2) || s1.empty()) {
 		std::cout << "Nothing to replace." << std::endl;
 		return (1);
 	}

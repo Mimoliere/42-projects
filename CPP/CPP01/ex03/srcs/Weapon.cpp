@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:05:31 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:05:32 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:17:40 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Weapon::~Weapon() {
 
 }
 
-std::string	Weapon::getType() {
+const std::string&	Weapon::getType() const {
 	return (_type);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:05:09 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:05:11 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:17:27 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon {
 		Weapon(std::string type);
 		~Weapon();
 
-		std::string	getType();
+		const std::string&	getType() const;
 		void		setType(std::string type);
 
 	private:
