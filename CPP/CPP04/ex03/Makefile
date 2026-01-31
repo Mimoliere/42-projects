@@ -1,10 +1,10 @@
-NAME	= animalSound
+NAME	= materia
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCS	= $(addprefix $(SRCDIR)/, main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp ICharacter.cpp ImateriaSource.cpp linkedLists.cpp MateriaSource.cpp)
+SRCS	= $(addprefix $(SRCDIR)/, main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp linkedLists.cpp MateriaSource.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 CC		= c++

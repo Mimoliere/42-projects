@@ -6,14 +6,15 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:21 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:12:21 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 15:44:02 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LINKEDLISTS_HPP
 #define LINKEDLISTS_HPP
 
-#include "Character.hpp"
+#include <iostream>
+#include "AMateria.hpp"
 
 struct t_abandoned {
 	AMateria*		obj;

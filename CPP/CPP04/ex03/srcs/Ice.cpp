@@ -6,13 +6,14 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:13:03 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:13:04 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 15:16:44 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Ice.hpp"
 
 Ice::Ice() : AMateria("ice") {
+	
 }
 
 Ice::Ice(const Ice& other) : AMateria(other) {

@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:11:51 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:11:53 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 15:49:56 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include "ICharacter.hpp"
 
 class ICharacter;
 

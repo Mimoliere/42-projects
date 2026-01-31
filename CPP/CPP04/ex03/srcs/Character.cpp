@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:34 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:12:34 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 16:07:50 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,26 @@ std::string const &	Character::getName() const {
 	return (_name);
 }
 
-int	const	Character::getNbEquip() const {
+int	Character::getNbEquip() const {
 	return (_nb_equip);
 }
 
 void	Character::equip(AMateria* m) {
 	if (_nb_equip == MAX_INVENTORY) {
-		std::cout << "Inventory is full !" << std::endl;
+		std::cout << RED << "Inventory is full !" << RESET << std::endl;
+		delete m;
 		return ;
 	}
 
-	_inventory[_nb_equip++] = m;
+	if (m != NULL)
+		_inventory[_nb_equip++] = m;
 }
 
 void	Character::unequip(int idx) {
-	if (idx < 0 || idx > _nb_equip - 1)
+	if (idx < 0 || idx > _nb_equip - 1) {
+		std::cout << RED << "Wrong index !" << RESET << std::endl;
 		return ;
+	}
 
 	insertBack(_abandon, _inventory[idx]);
 	_inventory[idx] = NULL;
@@ -78,8 +82,10 @@ void	Character::unequip(int idx) {
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx > _nb_equip - 1)
+	if (idx < 0 || idx > _nb_equip - 1) {
+		std::cout << RED << "Wrong index !" << RESET << std::endl;
 		return ;
+	}
 
 	_inventory[idx]->use(target);
 }

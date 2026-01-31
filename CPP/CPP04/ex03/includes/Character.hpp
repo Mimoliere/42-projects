@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:11:56 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:11:59 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 16:06:15 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 #include "linkedLists.hpp"
+
+#define RED     "\033[31m"
+#define RESET   "\033[0m"
 
 #define MAX_INVENTORY 4
 
@@ -35,7 +38,7 @@ class Character : public ICharacter {
 		~Character();
 
 		virtual std::string const & getName() const;
-		int	const					getNbEquip() const;
+		int							getNbEquip() const;
 
 		virtual void				equip(AMateria* m);
 		virtual void				unequip(int idx);

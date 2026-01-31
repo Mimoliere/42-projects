@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:02 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:12:04 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 15:18:06 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 class Cure : public AMateria {
 

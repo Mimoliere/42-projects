@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:13:15 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:13:16 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/01/31 16:03:52 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,17 @@ MateriaSource::~MateriaSource() {
 		delete _storage[i];
 }
 
-int const	MateriaSource::getNbStore() const {
-	return (_nb_store);
+int	MateriaSource::getNbStore() const {
+	return ((const int) _nb_store);
 }
 
 void	MateriaSource::learnMateria(AMateria* m) {
-	if (_nb_store == MAX_STORAGE)
+	if (_nb_store == MAX_STORAGE) {
+		std::cout << RED << "Can't store more Materias in this source." << RESET << std::endl;
+
+		delete m;
 		return ;
+	}
 
 	_storage[_nb_store++] = m;
 }
@@ -61,5 +65,6 @@ AMateria*	MateriaSource::createMateria(std::string const & type) {
 		}
 	}
 
+	std::cout << RED << "No " << type << " materia stored." << RESET << std::endl;
 	return (0);
 }
