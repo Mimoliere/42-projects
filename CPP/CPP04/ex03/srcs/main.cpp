@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:13:12 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 16:10:54 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/05 17:46:18 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,16 @@ int main() {
 	me->equip(tmp);
 	
 	me->unequip(0);
-
+	me->unequip(0);
+	tmp = src->createMateria("ice");
+	
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
+	me->equip(tmp);
+
+	me->use(0, *bob);
 	me->use(1, *bob);
+	me->use(5, *bob);
 	
 	delete bob;
 	delete me;

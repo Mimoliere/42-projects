@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:34 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 16:07:50 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/05 16:25:25 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,39 @@
 
 Character::Character(const std::string& name) {
 	_name = name;
-	_nb_equip = 0;
+	for (int i = 0; i < MAX_INVENTORY; i++) {
+		_inventory[i] = NULL;
+	}
 	initList(_abandon);
 }
 
 Character::Character(const Character& other) {
 	_name = other.getName();
-	_nb_equip = other.getNbEquip();
 	initList(_abandon);
 
-	for (int i = 0; i < _nb_equip; i++)
-		_inventory[i] = other._inventory[i]->clone();
+	for (int i = 0; i < MAX_INVENTORY; i++) {
+		if (other._inventory[i] != NULL)
+			_inventory[i] = other._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
+	}
 }
 
 Character&	Character::operator=(const Character& other) {
 	if (this != &other) {
 		_name = other.getName();
 
-		for (int i = 0; i < _nb_equip; i++)
-			delete _inventory[i];
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			if (_inventory[i] != NULL)
+				delete _inventory[i];
+		}
 		
-		_nb_equip = other.getNbEquip();
-		for (int i = 0; i < _nb_equip; i++)
-			_inventory[i] = other._inventory[i]->clone();
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			if (other._inventory[i] != NULL)
+				_inventory[i] = other._inventory[i]->clone();
+			else
+				_inventory[i] = NULL;
+		}
 		
 		clearList(_abandon);
 		initList(_abandon);
@@ -45,8 +55,10 @@ Character&	Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
-	for (int i = 0; i < _nb_equip; i++)
-		delete _inventory[i];
+	for (int i = 0; i < MAX_INVENTORY; i++) {
+		if (_inventory[i] != NULL)
+			delete _inventory[i];
+	}
 
 	clearList(_abandon);
 }
@@ -55,37 +67,51 @@ std::string const &	Character::getName() const {
 	return (_name);
 }
 
-int	Character::getNbEquip() const {
-	return (_nb_equip);
-}
-
 void	Character::equip(AMateria* m) {
-	if (_nb_equip == MAX_INVENTORY) {
-		std::cout << RED << "Inventory is full !" << RESET << std::endl;
-		delete m;
-		return ;
+	for (int i = 0; i < MAX_INVENTORY; i++) {
+		if (_inventory[i] == NULL && m != NULL) {
+			_inventory[i] = m;
+			std::cout << m->getType() << " equiped at index : " << i + 1 << " !" << std::endl;
+			return ;
+		}
+		else if (_inventory[i] == NULL) {
+			return ;
+		}
 	}
 
-	if (m != NULL)
-		_inventory[_nb_equip++] = m;
+	std::cout << RED << "Inventory is full !" << RESET << std::endl;
+	delete m;
+	m = NULL;
+	return ;
 }
 
 void	Character::unequip(int idx) {
-	if (idx < 0 || idx > _nb_equip - 1) {
+	if (idx < 0 || idx > MAX_INVENTORY - 1) {
 		std::cout << RED << "Wrong index !" << RESET << std::endl;
 		return ;
 	}
 
-	insertBack(_abandon, _inventory[idx]);
-	_inventory[idx] = NULL;
-	_nb_equip--;
+	if (_inventory[idx] != NULL) {
+		AMateria*	clone = _inventory[idx]->clone();
+		insertBack(_abandon, clone);
+		delete _inventory[idx];
+		_inventory[idx] = NULL;
+		std::cout << clone->getType() << " unequiped at index : " << idx + 1 << std::endl;
+	}
+	else {
+		std::cout << RED << "No weapon here !" << RESET << std::endl;
+	}
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx > _nb_equip - 1) {
+	if (idx < 0 || idx > MAX_INVENTORY - 1) {
 		std::cout << RED << "Wrong index !" << RESET << std::endl;
 		return ;
 	}
 
-	_inventory[idx]->use(target);
+	if (_inventory[idx] != NULL)
+		_inventory[idx]->use(target);
+	else {
+		std::cout << RED << "No weapon here !" << RESET << std::endl;
+	}
 }

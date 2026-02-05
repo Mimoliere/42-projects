@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:11:56 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 16:06:15 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:41:38 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class Character : public ICharacter {
 	private:
 		std::string		_name;
 		AMateria*		_inventory[MAX_INVENTORY];
-		int				_nb_equip;
 		t_abandoned*	_abandon;
 
 	public:
