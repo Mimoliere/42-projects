@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:07:37 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:07:38 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/24 14:45:04 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printResult(Point a, Point b, Point c, Point p);
 
-int main( void ) {
+int main(void) {
 	Point	a(0, 2);
 	Point	b(2, -2);
 	Point	c(-2, -2);

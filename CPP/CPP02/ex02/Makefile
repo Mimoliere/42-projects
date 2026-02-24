@@ -1,4 +1,4 @@
-NAME	= a.out
+NAME	= fixed
 
 SRCDIR	= srcs
 OBJDIR	= objs

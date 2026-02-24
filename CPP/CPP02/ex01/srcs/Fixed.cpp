@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:06:45 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:06:46 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/24 15:05:06 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		Fixed::toInt(void) const {
 }
 
 float	Fixed::toFloat(void) const {
-	return ((float) _rawBits / (1 << _fracBitsNb));
+	return (static_cast<float>(_rawBits) / (1 << _fracBitsNb));
 }
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& fixed) {

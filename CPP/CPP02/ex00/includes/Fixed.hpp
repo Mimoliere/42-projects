@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:06:25 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:06:28 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/11 13:06:03 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Fixed {
 		~Fixed();
 
 		int		getRawBits(void) const;
-		void	setRawBits(int const newRawBits);
+		void	setRawBits(int const raw);
 
 };
 

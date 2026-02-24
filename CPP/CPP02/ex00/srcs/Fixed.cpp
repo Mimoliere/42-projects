@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:06:30 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:06:31 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/02/11 13:39:34 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	Fixed::getRawBits(void) const {
 	return (_rawBits);
 }
 
-void	Fixed::setRawBits(int const newRawBits) {
-	_rawBits = newRawBits;
+void	Fixed::setRawBits(int const raw) {
+	_rawBits = raw;
 }
