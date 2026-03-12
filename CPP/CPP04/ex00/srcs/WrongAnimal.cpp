@@ -12,8 +12,13 @@
 
 #include "../includes/WrongAnimal.hpp"
 
+#define GREEN   "\033[32m"
+#define RED     "\033[31m"
+#define MAGENTA "\033[35m"
+#define RESET   "\033[0m"
+
 WrongAnimal::WrongAnimal() {
-	std::cout << "WrongAnimal constructor called" << std::endl;
+	std::cout << GREEN << "WrongAnimal constructor called" << RESET << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other) {
@@ -28,11 +33,11 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& other) {
 }
 
 WrongAnimal::~WrongAnimal() {
-	std::cout << "WrongAnimal destructor called" << std::endl;
+	std::cout << RED << "WrongAnimal destructor called" << RESET << std::endl;
 }
 
 void	WrongAnimal::makeSound() const {
-	std::cout << "Hello euuuh.. Meow ?" << std::endl;
+	std::cout << MAGENTA << "❌ Hello euuuh.. Meow ?" << RESET << std::endl;
 }
 
 std::string	WrongAnimal::getType(void) const {

@@ -12,8 +12,13 @@
 
 #include "../includes/WrongCat.hpp"
 
+#define GREEN   "\033[32m"
+#define RED     "\033[31m"
+#define MAGENTA "\033[35m"
+#define RESET   "\033[0m"
+
 WrongCat::WrongCat() {
-	std::cout << "WrongCat constructor called" << std::endl;
+	std::cout << GREEN << "WrongCat constructor called" << RESET << std::endl;
 
 	_type = "WrongCat";
 }
@@ -29,9 +34,9 @@ WrongCat&	WrongCat::operator=(const WrongCat& other) {
 }
 
 void	WrongCat::makeSound() const {
-	std::cout << "Meow meow" << std::endl;
+	std::cout << MAGENTA << "❌ Meow meow" << RESET << std::endl;
 }
 
 WrongCat::~WrongCat() {
-	std::cout << "WrongCat destructor called" << std::endl;
+	std::cout << RED << "WrongCat destructor called" << RESET << std::endl;
 }

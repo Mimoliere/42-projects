@@ -6,11 +6,14 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:47 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 14:14:09 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:19:33 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cure.hpp"
+
+#define GREEN   "\033[32m"
+#define RESET   "\033[0m"
 
 Cure::Cure() : AMateria("cure") {
 }
@@ -37,5 +40,5 @@ AMateria*	Cure::clone() const {
 }
 
 void	Cure::use(ICharacter& target) {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << GREEN << "* heals " << target.getName() << "'s wounds *" << RESET << std::endl;
 }

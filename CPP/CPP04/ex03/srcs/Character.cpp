@@ -6,11 +6,13 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:12:34 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/02/05 16:25:25 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:19:33 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Character.hpp"
+
+#define GREEN   "\033[32m"
 
 Character::Character(const std::string& name) {
 	_name = name;
@@ -18,6 +20,7 @@ Character::Character(const std::string& name) {
 		_inventory[i] = NULL;
 	}
 	initList(_abandon);
+	std::cout << GREEN << "Character " << _name << " constructor called" << RESET << std::endl;
 }
 
 Character::Character(const Character& other) {
@@ -55,6 +58,7 @@ Character&	Character::operator=(const Character& other) {
 }
 
 Character::~Character() {
+	std::cout << RED << "Character " << _name << " destructor called" << RESET << std::endl;
 	for (int i = 0; i < MAX_INVENTORY; i++) {
 		if (_inventory[i] != NULL)
 			delete _inventory[i];

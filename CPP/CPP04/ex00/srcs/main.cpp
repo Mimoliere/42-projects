@@ -14,6 +14,11 @@
 #include "../includes/Cat.hpp"
 #include "../includes/WrongCat.hpp"
 
+#define CYAN    "\033[36m"
+#define MAGENTA "\033[35m"
+#define BOLD    "\033[1m"
+#define RESET   "\033[0m"
+
 int main()
 {
 	const Animal*	meta = new Animal();
@@ -22,10 +27,10 @@ int main()
 	const WrongAnimal*	wrongAnimal = new WrongAnimal();
 	const WrongAnimal*	wrongCat = new WrongCat();
 
-	std::cout << std::endl << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << std::endl << CYAN << BOLD << "Type: " << j->getType() << RESET << std::endl;
+	std::cout << CYAN << BOLD << "Type: " << i->getType() << RESET << std::endl;
 
-	std::cout << std::endl << wrongCat->getType() << " " << std::endl << std::endl;
+	std::cout << std::endl << MAGENTA << BOLD << "Type: " << wrongCat->getType() << RESET << std::endl << std::endl;
 
 	i->makeSound();
 	j->makeSound();

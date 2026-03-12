@@ -6,14 +6,17 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:13:15 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/02/05 16:22:32 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:19:33 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/MateriaSource.hpp"
 
+#define GREEN   "\033[32m"
+
 MateriaSource::MateriaSource() {
 	_nb_store = 0;
+	std::cout << GREEN << "MateriaSource constructor called" << RESET << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other) {
@@ -36,6 +39,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& other) {
 }
 
 MateriaSource::~MateriaSource() {
+	std::cout << RED << "MateriaSource destructor called" << RESET << std::endl;
 	for (int i = 0; i < _nb_store; i++)
 		delete _storage[i];
 }

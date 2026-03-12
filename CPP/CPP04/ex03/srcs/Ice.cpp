@@ -6,11 +6,14 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 14:13:03 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/01/31 15:16:44 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:19:33 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Ice.hpp"
+
+#define CYAN    "\033[36m"
+#define RESET   "\033[0m"
 
 Ice::Ice() : AMateria("ice") {
 	
@@ -38,5 +41,5 @@ AMateria*	Ice::clone() const {
 }
 
 void	Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << CYAN << "* shoots an ice bolt at " << target.getName() << " *" << RESET << std::endl;
 }

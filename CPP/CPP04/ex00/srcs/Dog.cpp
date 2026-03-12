@@ -12,8 +12,13 @@
 
 #include "../includes/Dog.hpp"
 
+#define GREEN   "\033[32m"
+#define RED     "\033[31m"
+#define YELLOW  "\033[33m"
+#define RESET   "\033[0m"
+
 Dog::Dog() {
-	std::cout << "Dog constructor called" << std::endl;
+	std::cout << GREEN << "Dog constructor called" << RESET << std::endl;
 
 	_type = "Dog";
 }
@@ -30,9 +35,9 @@ Dog&	Dog::operator=(const Dog& other) {
 }
 
 Dog::~Dog() {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << RED << "Dog destructor called" << RESET << std::endl;
 }
 
 void	Dog::makeSound() const {
-	std::cout << "Woof woof" << std::endl;
+	std::cout << YELLOW << "🐶 Woof woof" << RESET << std::endl;
 }
