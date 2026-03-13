@@ -15,7 +15,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other.get_name()), _grad
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other) {
-		// On fait comment pour copier le nom ???
 		_grade = other.get_grade();
 	}
 
@@ -32,6 +31,15 @@ const std::string	Bureaucrat::get_name() const {
 
 int	Bureaucrat::get_grade() const {
 	return (_grade);
+}
+
+void	Bureaucrat::set_grade(int new_grade) {
+	if (new_grade < MAX_GRADE)
+		throw GradeTooHighException();
+	if (new_grade > MIN_GRADE)
+		throw GradeTooLowException();
+
+	_grade = new_grade;
 }
 
 void	Bureaucrat::incr_grade() {
