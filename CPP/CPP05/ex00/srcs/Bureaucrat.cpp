@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/17 17:03:47 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/04/17 17:03:48 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade) {

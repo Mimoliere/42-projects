@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 17:03:29 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/17 17:03:29 by bguerrou         ###   ########.fr       */
+/*   Created: 2026/04/17 17:03:10 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/04/17 17:03:10 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
 	if (grade > MIN_GRADE)
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
 	std::cout << "Bureaucrat " << _name << " of grade " << _grade << " initiated." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other.get_name()), _grade(other.get_grade()) {
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other.get_grade()) {
 
 }
 
@@ -71,13 +71,21 @@ void	Bureaucrat::decr_grade() {
 	_grade++;
 }
 
-void	Bureaucrat::signForm(Form& form) {
+void	Bureaucrat::signForm(AForm& form) {
 	try {
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.get_name() << std::endl;
+	} catch(const std::exception& e) {
+		std::cerr << _name << " couldn't sign the " << form.get_name() << " Form because " << e.what() << std::endl;
 	}
-	catch(const std::exception& e) {
-		std::cerr << _name << " couldn't sign " << form.get_name() << " because " << e.what() << '\n';
+}
+
+void	Bureaucrat::executeForm(AForm const & form) const {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executed " << form.get_name() << '.' << std::endl;
+	} catch (const std::exception& e) {
+		std::cerr << _name << " couldn't execute the " << form.get_name() << " Form because " << e.what() << std::endl;
 	}
 }
 

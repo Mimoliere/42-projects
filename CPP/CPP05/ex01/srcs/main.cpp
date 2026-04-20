@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/17 17:03:33 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/04/17 17:03:34 by bguerrou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Form.hpp"
 
 #define RESET "\033[0m"
 #define BOLD "\033[1m"
@@ -20,67 +33,51 @@ static void print_fail(const std::exception& e) {
 }
 
 int main(void) {
-	print_header("Valid constructions");
+	print_header("Constructeur de Form : Valide");
 	try {
-		Bureaucrat top("Adrian", 1);
-		Bureaucrat low("Lara", 150);
-		print_ok("Creation at both valid bounds");
-		std::cout << top;
-		std::cout << low;
+		Form f1("Tax return", 50, 20);
+		print_ok("Formulaire creé avec succès");
+		std::cout << f1;
 	} catch (const std::exception& e) {
 		print_fail(e);
 	}
 
-	print_header("Invalid constructions");
+	print_header("Constructeur de Form : Grade trop haut");
 	try {
-		Bureaucrat tooHigh("Brian", 0);
-		std::cout << tooHigh;
-		print_ok("This line should not be reached");
-	} catch (const std::exception& e) {
-		print_fail(e);
-	}
-	try {
-		Bureaucrat tooLow("Crian", 151);
-		std::cout << tooLow;
-		print_ok("This line should not be reached");
+		Form f2("Top Secret", 0, 10);
+		std::cout << f2;
+		print_ok("Cette ligne ne devrait pas s'afficher");
 	} catch (const std::exception& e) {
 		print_fail(e);
 	}
 
-	print_header("Increment/decrement limits");
+	print_header("Constructeur de Form : Grade trop bas");
 	try {
-		Bureaucrat a("Alex", 2);
-		a.incr_grade();
-		print_ok("Increment from 2 to 1 works");
-		std::cout << a;
-		a.incr_grade();
-		print_ok("This line should not be reached");
-	} catch (const std::exception& e) {
-		print_fail(e);
-	}
-	try {
-		Bureaucrat d("Dina", 149);
-		d.decr_grade();
-		print_ok("Decrement from 149 to 150 works");
-		std::cout << d;
-		d.decr_grade();
-		print_ok("This line should not be reached");
+		Form f3("Trash", 151, 150);
+		std::cout << f3;
+		print_ok("Cette ligne ne devrait pas s'afficher");
 	} catch (const std::exception& e) {
 		print_fail(e);
 	}
 
-	print_header("Copy and assignment behavior");
+	print_header("Bureaucrat signe avec succès");
 	try {
-		Bureaucrat original("Eva", 42);
-		Bureaucrat copy(original);
-		print_ok("Copy constructor keeps name and grade");
-		std::cout << copy;
+		Bureaucrat b1("Alice", 40);
+		Form f4("Permis A38", 50, 50);
+		b1.signForm(f4);
+		print_ok("Le formulaire devrait être signé");
+		std::cout << f4;
+	} catch (const std::exception& e) {
+		print_fail(e);
+	}
 
-		Bureaucrat assigned("Frank", 130);
-		assigned = original;
-		std::cout << YELLOW << "[INFO] " << RESET
-			<< "After assignment, name stays constant and grade is copied:" << std::endl;
-		std::cout << assigned;
+	print_header("Bureaucrat échoue à signer (grade insuffisant)");
+	try {
+		Bureaucrat b2("Bob", 60);
+		Form f5("Declaration fiscale", 50, 50);
+		b2.signForm(f5);
+		print_ok("Le formulaire ne devrait PAS être signé");
+		std::cout << f5;
 	} catch (const std::exception& e) {
 		print_fail(e);
 	}

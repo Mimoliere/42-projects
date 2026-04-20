@@ -1,10 +1,16 @@
-NAME	= form
+NAME	= intern
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCS	= $(addprefix $(SRCDIR)/, main.cpp Bureaucrat.cpp Form.cpp)
+SRCS	= $(addprefix $(SRCDIR)/,	main.cpp \
+									Bureaucrat.cpp \
+									AForm.cpp \
+									ShrubberyCreationForm.cpp \
+									RobotomyRequestForm.cpp \
+									PresidentialPardonForm.cpp \
+									Intern.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 CC		= c++

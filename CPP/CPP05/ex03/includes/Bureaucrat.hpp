@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 17:03:37 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/17 17:03:37 by bguerrou         ###   ########.fr       */
+/*   Created: 2026/04/17 17:02:42 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/04/17 17:02:43 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <exception>
 
-class Form;
+class AForm;
 
 #define MIN_GRADE 150
 #define MAX_GRADE 1
@@ -39,7 +39,8 @@ class Bureaucrat {
 
 		void				incr_grade();
 		void				decr_grade();
-		void				signForm(Form& form);
+		void				signForm(AForm& form);
+		void				executeForm(AForm const & form) const;
 
 		class GradeTooHighException : public std::exception {
 			public:
