@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 13:43:03 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/21 18:02:59 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/04/23 12:42:23 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
