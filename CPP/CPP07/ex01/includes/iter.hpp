@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/24 14:46:22 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/27 15:36:11 by bguerrou         ###   ########.fr       */
+/*   Created: 2026/04/27 15:04:36 by bguerrou          #+#    #+#             */
+/*   Updated: 2026/04/27 16:14:21 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#ifndef ITER_HPP
+#define ITER_HPP
 
 #include <iostream>
 
 template <typename T>
-void	swap(T &x, T &y) {
-	T	tmp = x;
-
-	x = y;
-	y = tmp;
+void	printIt(T const c) {
+	std::cout << c << " ";
 }
 
-template <typename T>
-T		min(T x, T y) {
-	return (x < y ? x : y);
+void	doubleIt(int& n) {
+	n *= 2;
 }
 
-template <typename T>
-T		max(T x, T y) {
-	return (x > y ? x : y);
+void	toMaj(char& c) {
+	c = std::toupper(c);
+}
+
+template <typename T, typename F>
+void	iter(T* arr, const int len, F func) {
+	for (int i = 0; i < len; i++) {
+		func(arr[i]);
+	}
 }
 
 #endif

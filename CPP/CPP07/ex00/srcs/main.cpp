@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 14:51:53 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/24 14:54:01 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/04/27 15:23:48 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	main(void) {
 	std::string	c = "chaine1";
 	std::string	d = "chaine2";
 
-	::swap( a, b );
+	::swap(a, b);
 	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	std::cout << "min(a, b) = " << ::min(a, b) << std::endl;
+	std::cout << "max(a, b) = " << ::max(a, b) << std::endl;
 
 	::swap(c, d);
 	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+	std::cout << "min(c, d) = " << ::min(c, d) << std::endl;
+	std::cout << "max(c, d) = " << ::max(c, d) << std::endl;
 
 	return (0);
 }
