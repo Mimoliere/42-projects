@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bguerrou <boualemguerroumi21@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:26:33 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/27 17:30:06 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/05/05 11:08:47 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Array<T>::Array() : size_(0), arr_(NULL) {
 
 template <typename T>
 Array<T>::Array(unsigned int n) {
-	arr_ = new T[n];
+	arr_ = new T[n]();
 	size_ = n;
 }
 
@@ -31,9 +31,10 @@ Array<T>::Array(const Array& other) : size_(0), arr_(NULL) {
 template <typename T>
 Array<T>&	Array<T>::operator=(const Array& other) {
 	if (this != &other) {
-		delete[] arr_;
+		if (arr_)
+			delete[] arr_;
 		size_ = other.size_;
-		arr_ = new T[size_];
+		arr_ = new T[size_]();
 		for (unsigned int i = 0; i < size_; i++) {
 			arr_[i] = other.arr_[i];
 		}
