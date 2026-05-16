@@ -6,7 +6,7 @@
 /*   By: bguerrou <bguerrou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:53:09 by bguerrou          #+#    #+#             */
-/*   Updated: 2026/04/27 17:30:41 by bguerrou         ###   ########.fr       */
+/*   Updated: 2026/05/16 13:30:24 by bguerrou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	main(void) {
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	return 0;
+	return (0);
 }
