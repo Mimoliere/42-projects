@@ -1,10 +1,10 @@
-NAME	= easyfind
+NAME	= RPN
 
 SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCS	= $(addprefix $(SRCDIR)/, main.cpp)
+SRCS	= $(addprefix $(SRCDIR)/, main.cpp RPN.cpp)
 OBJS	= $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 CC		= c++
