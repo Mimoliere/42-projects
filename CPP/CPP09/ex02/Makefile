@@ -1,4 +1,4 @@
-NAME	= easyfind
+NAME	= PmergeMe
 
 SRCDIR	= srcs
 OBJDIR	= objs
